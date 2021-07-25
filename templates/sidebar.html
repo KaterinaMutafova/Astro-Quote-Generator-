@@ -1,0 +1,27 @@
+{% load static %}
+
+<!-- Side navigation -->
+<div class="sidenav">
+  <a href="{% url 'elements_index' %}">
+      <img src="{% static 'img/stars/star-1.png' %}"/>
+      Стихии
+  </a>
+  <a href="/">
+      <img src="{% static 'img/stars/star-1.png' %}"/>
+      Знаци
+  </a>
+  <a href="/">
+      <img src="{% static 'img/stars/star-1.png' %}"/>
+      Планети
+  </a>
+  <a href="{% url 'show_all_quotes' %}">
+      <img src="{% static 'img/stars/star-1.png' %}"/>
+      Цитати
+  </a>
+  <a href="{% url 'show_all_quotes' %}">
+      <img src="{% static 'img/stars/star-1.png' %}"/>
+      Автори
+  </a>
+</div>
+
+

@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+
+body{
+    background-color: LightCoral;  
+}
+
+button{
+    background-color: transparent;
+    height: 1.5cm;
+    width: 3cm;
+    border-radius: 2cm;
+    /*border-width: 5px;*/
+    border: 5px solid rgb(71, 71, 71);
+    /*border-style: solid ;*/
+    margin-top: 10px;
+    
+}
+
+button:hover {
+    background-color: rgb(255, 255, 255);
+
+}
+
+#container{
+    background-color: transparent;
+    border: 5px solid rgb(71, 71, 71);
+    height: auto;
+    width: 80%;
+    border-radius: 5cm;
+    margin: auto;
+    margin-top: 30px;
+    text-align: center;
+    
+
+}
+
+#quotetext {
+    margin: 20px 50px 50px 50px;
+    font-size: 26px;
+    color:rgb(0, 0, 0);
+    
+}
+
+.section2 {
+    background: #4F3B78;
+    box-sizing: border-box;
+    margin: 0;
+    box-shadow: 0px 10px 10px -12px rgba(54,59,78,0.4);
+    border-radius: 2px;
+    overflow: hidden;
+}
+

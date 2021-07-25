@@ -1,0 +1,632 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+/*@font-face {*/
+/*      font-family: Ossem-Rounded;*/
+/*      src: url('/templates/fonts/Ossem-Rounded.otf');*/
+/*    }*/
+/* * {*/
+/*     font-family: Ossem-Rounded, sans-serif;*/
+/*    }*/
+
+
+body {
+    /*background-color: lightpink;*/
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+button{
+    background-color: transparent;
+    height: 1.5cm;
+    width: 3cm;
+    border-radius: 2cm;
+    /*border-width: 5px;*/
+    border: 5px solid rgb(71, 71, 71);
+    /*border-style: solid ;*/
+    margin-top: 10px;
+
+}
+
+button:hover {
+    /*background-color: rgb(255, 255, 255);*/
+    background-color: #ffcb63;
+    text-decoration: underline;
+    cursor: pointer;
+
+}
+
+#container{
+    background: #ffe6cc;
+    /*background-color: transparent;*/
+    /*border: 5px solid rgb(71, 71, 71);*/
+    -webkit-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
+    height: auto;
+    width: 70%;
+    border-radius: 5cm;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    margin-left: 7%;
+    text-align: center;
+    /*padding:  20px 150px 20px 150px;*/
+}
+
+#container h3 {
+    padding-top: 40px;
+    margin: 0px;
+
+}
+
+#quotetext {
+    margin: 20px 50px 50px 50px;
+    font-size: 26px;
+    color:rgb(0, 0, 0);
+
+}
+
+
+p.balloon {
+    /*padding: 20px 20px 20px 20px;*/
+    padding: 10px 20px 10px 20px;
+    margin: 0px;
+
+}
+
+p.simple {
+    margin: 7px 0px 7px 0px;
+}
+
+img.img-balloon {
+    max-height: 100px;
+    alignment: left;
+    opacity: 0.8;
+}
+
+
+.big {
+    padding: 20px 70px 40px 70px;
+}
+
+.quote-details-balloon {
+    text-align: center;
+
+}
+
+
+
+
+a {
+    text-decoration: none;
+    color: ghostwhite;
+}
+
+/* navigation bar layout and style */
+nav {
+    background: rgb(71, 71, 71);
+    height: 70px;
+
+}
+/* navigation bar how items display */
+nav ul {
+    display: flex;
+    margin-top: 0px;
+
+}
+
+/* navigation bar inside items */
+nav ul li,
+nav ul li a {
+    color: ghostwhite;
+    text-decoration: none;
+    list-style: none;
+    font-size: 20px;
+/* Padding is used to create space around an element's content,
+inside of any defined borders. */
+    padding: 6px;
+/* Create space from the top to the element. */
+    margin-top: 10px;
+    margin-left: 5px;
+
+}
+
+nav ul li a:hover {
+    /*color: #c4b81e;*/
+    color: #ffcb63;;
+}
+
+
+/*navigation bar right items positioning */
+nav ul li.right {
+    position: absolute;
+    right: 20px;
+}
+/*navigation bar right items */
+nav ul li.right a {
+    font-size: 20px;
+    margin: -6px auto;
+}
+
+/*navigation bar img area */
+/*nav ul li.img {*/
+/*    margin-top: 0px;*/
+
+/*}*/
+
+nav ul li.right a:hover {
+    /*color: #c4b81e;*/
+    color: #ffcb63;
+}
+
+
+
+#img-logo-fixed {
+    /*width: 30px;*/
+    max-height: 15%;
+    position: fixed;
+    margin-left: -60px;
+    margin-top: -25px;
+
+
+}
+#img-logo-fixed:hover {
+    max-height: 16%;
+}
+
+
+#img-logo-absolute {
+    /*width: 30px;*/
+    max-height: 15%;
+    position: absolute;
+    margin-left: -60px;
+    margin-top: -25px;
+
+}
+
+
+#img-logo-absolute:hover {
+    max-height: 16%;
+}
+
+
+/*a.tooltiptext :before {*/
+/*    position : absolute;*/
+/*     content : attr(data-tooltip);*/
+/*     opacity : 0;*/
+/*}*/
+
+/*a.tooltiptext:hover:before {*/
+/*    opacity : 1;*/
+/*}*/
+
+
+
+
+/*heading 1 and 2 */
+h1, h2 {
+    text-align: center;
+}
+
+
+
+
+/* Container holding the image and the text */
+.container-top-image {
+    position: relative;
+    text-align: center;
+    color: white;
+
+}
+
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5vw;
+    /*font-palette: dark;*/
+    /*background-color: #1f3d5c;*/
+    /*border-radius: 2cm;*/
+    padding: 10px;
+    /*text-shadow: 0 0 20px #FF0000, 0 0 20px #0000FF;*/
+    text-shadow: 0 0 20px #c3decb, 0 0 20px black;
+    display: block;
+    width: 40%;
+}
+
+header {
+    /*height: 300px;*/
+    width: 100%;
+    background: rgb(71, 71, 71);
+    overflow: hidden;
+}
+
+img#front-logo-img {
+    /*height: 250px;*/
+    object-fit: cover;
+    opacity: 0.4;
+}
+
+
+
+.sidenav {
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    top: 400px;
+    right: 10px;
+    background: rgb(71, 71, 71);
+    overflow-x: hidden;
+    padding: 8px 0;
+    border-radius: 2cm;
+    border: 5px solid rgb(71, 71, 71);
+    -webkit-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
+
+}
+
+.sidenav a {
+    padding: 5px 8px 5px 8px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.5vw;
+    color: ghostwhite;
+    display: block;
+}
+
+
+.sidenav a:hover {
+    /*color: #c4b81e;*/
+    color: #ffcb63;
+}
+
+/*.main {*/
+/*  margin-left: 140px; !* Same width as the sidebar + left position in px *!*/
+/*  font-size: 28px; !* Increased text to enable scrolling *!*/
+/*  padding: 0px 10px;*/
+/*}*/
+
+
+/* On smaller screens, where height is less than 450px,
+/*change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+div.sidenav a img {
+    max-height: 5%;
+    position: fixed;
+    margin-left: -40px;
+    margin-top: -10px;
+
+}
+
+div.sidenav a img:hover {
+    max-height: 7%;
+}
+
+
+
+/*data form with boxes to write - profile and notes
+<div class="form"> in the html file*/
+.form {
+    /* space around an element's content inside of any defined borders. */
+    padding: 10px 20px 30px 20px;
+    /* width of the box */
+    width: 35%;
+    margin: 0px auto 40px auto;
+    border-radius: 1cm;
+    /*background-color: #ffe8ba;*/
+    /*-webkit-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);*/
+    /*-moz-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);*/
+    /*box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);*/
+}
+
+/*data form where you enter data - authors and  quotes*/
+input[type=text],
+input[type=url],
+input[type=number],
+input[type=password],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 5px 0 10px 0;
+    display: block;
+    border: 5px solid rgb(71, 71, 71);
+    border-radius: 0.5cm;
+    box-sizing: border-box;
+}
+
+/* all other buttons */
+input[type=submit],
+.button {
+    /*background-color: #91cccc;*/
+    /*text-decoration: underline;*/
+    /*color: 	black;*/
+    /*padding: 15px 20px;*/
+    /*border: none;*/
+    /*cursor: pointer;*/
+    /*width: 200px;*/
+    /*height: 50px;*/
+    /*font-family: 'Lato', sans-serif;*/
+    /*font-size: 16px;*/
+    /*display: block;*/
+    /*margin: 15px auto 0;*/
+
+
+    background-color: transparent;
+    height: 1.5cm;
+    width: 3cm;
+    border-radius: 2cm;
+    /*border-width: 5px;*/
+    border: 5px solid rgb(71, 71, 71);
+    /*border-style: solid ;*/
+    margin: 15px auto 0;
+    cursor: pointer;
+    display: block;
+
+}
+
+/* all buttons when the mouse is on them */
+input[type=submit]:hover,
+.button:hover {
+    background-color: #ffcb63;;
+    text-decoration: underline;
+}
+
+/* style of edit button */
+input[type=edit],
+.button.edit {
+    /*background-color: #ffe8ba;*/
+    background: rgb(71, 71, 71);
+    height: 22px;
+    text-align: center;
+}
+
+/* style of delete button */
+input[type=delete],
+.button.delete {
+    /*background: #ffe8ba;*/
+    background: rgb(71, 71, 71);
+    height: 22px;
+    text-align: center;
+}
+
+/* style of details button */
+input[type=details],
+.button.details {
+    /*background: #ffe8ba;*/
+    background: rgb(71, 71, 71);
+    height: 22px;
+    text-align: center;
+}
+
+/* style when the mousse is on the delete, edit and details button */
+input[type=details]:hover,
+input[type=delete]:hover,
+input[type=edit]:hover,
+.button.details:hover,
+.button.delete:hover,
+.button.edit:hover{
+    background-color: #ffcb63;
+    text-decoration: underline;
+
+}
+
+.quote_detail_buttons {
+    display: flex;
+    margin-left: 5%;
+
+}
+
+/* the balloons for quotes and profile layout */
+
+#main_heading {
+    width: 60%;
+    margin-left: 7%;
+    padding: 5px 50px;
+    position: center;
+}
+
+.quote-container {
+    display: -moz-box;
+    justify-content: center;
+    margin: auto auto 30px;
+}
+
+/* the boxes inside area*/
+.quote-container,
+.quote-list {
+    width: 60%;
+    -webkit-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
+    border-radius: 5cm;
+    padding: 50px;
+    background: #ffe6cc;
+    margin-left: 7%;
+    margin-bottom: 30px;
+    /*border: 5px solid rgb(71, 71, 71);*/
+
+
+}
+
+/* the heading of the box */
+.quote-container h2 {
+    text-align: left;
+    margin-left: 10%;
+
+}
+
+.quote-container h5 {
+    text-align: left;
+    margin-left: 10%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+
+/* image in the box - i want it on the top right in one line with the heading*/
+.quote-container img{
+    position: relative;
+    float: right;
+}
+
+.image-above{
+    position: relative;
+    width: 100px;
+    max-height: 100px;
+    float: right;
+    right: 70px;
+}
+
+.image-base{
+    position: relative;
+    width: 100px;
+    max-height: 100px;
+    float: right;
+    right: 70px;
+
+
+}
+
+.image-top{
+    position: relative;
+    width: 50px;
+    max-height: 50px;
+    right: -5px;
+    bottom: 25px;
+
+
+}
+
+
+/* paragraph in the profile box - "all notes"
+I want to be in the center bottom of the box */
+.quote-container div p {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* "age" in profile */
+.quote-container p{
+    font-size: 20px;
+}
+
+/*       NEW!!!!!
+
+box for note details layout */
+.note-details-container{
+    display: block;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 2% auto 10% auto;
+    background: #ffe8ba;
+}
+
+/* the boxes inside area*/
+.note-details-container,
+.quote-list {
+    width: 80%;
+    -webkit-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
+    border-radius: 2px;
+    padding: 20px;
+}
+
+/* the heading of the box */
+.note-details-container h2 {
+    text-align: center;
+    font-size: 30px;
+    font-family: Georgia, serif;
+    letter-spacing: 2px;
+    word-spacing: 5px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: overline solid rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: small-caps;
+    text-transform: capitalize;
+}
+
+
+/* image in the box details*/
+.note-details-container img{
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+
+.note-details-container div p{
+    font-size: 25px;
+    font-style: italic;
+}
+.note-details-container p{
+    font-size: 18px;
+    font-style: normal;
+}
+
+/* for all class right items like Profile button in the navigation bar */
+.right {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#elements_container{
+    background: #ffe8ba;
+    /*background-color: transparent;*/
+    /*border: 5px solid rgb(71, 71, 71);*/
+    -webkit-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
+    height: auto;
+    width: 30%;
+    border-radius: 5cm;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    margin-left: 7%;
+    text-align: center;
+    padding:  20px 20px 20px 20px;
+}
+
+
+
+
+
+
+
+/* footer style and layout */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: rgb(71, 71, 71);
+    width: 100%;
+    padding: 15px 0;
+    margin-top: 1%;
+}
+
+/* footer inside items */
+footer div {
+    text-align: center;
+    color: ghostwhite;
+    width: 100%;
+    height: 10%;
+
+}
+
+/*h2 img {*/
+/*    size: 10px 10px;*/
+/*}*/
+

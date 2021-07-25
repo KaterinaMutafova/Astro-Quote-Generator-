@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!--quotes container-->
+
+
+        {% if not authors %}
+            <h2 id="main_heading">Няма автори.</h2>
+        {% else %}
+            <h1 id="main_heading">Всички автори</h1>
+
+            {% for author in authors %}
+                <div class="quote-container">
+                    <h2>{{ author.name }}<img class="image-above" src="{% static 'img/elements.jpg' %}" /></h2>
+{#                    {% if quote.element == 'огън' %}#}
+{#                        <h2>{{ quote.element }}<img class="image-base" src="{% static 'img/fire.jpg' %}" /></h2>#}
+{#                    {% elif quote.element == 'земя'%}#}
+{#                        <h2>{{ quote.element }}<img class="image-base" src="{% static 'img/earth.jpg' %}" /></h2>#}
+{#                    {% elif quote.element == 'въздух'%}#}
+{#                        <h2>{{ quote.element }}<img class="image-base" src="{% static 'img/wind.jpg' %}" /></h2>#}
+{#                    {% elif quote.element == 'вода'%}#}
+{#                        <h2>{{ quote.element }}<img class="image-base" src="{% static 'img/water.jpg' %}" /></h2>#}
+{##}
+{#                    {% endif %}#}
+
+{#                    {% if quote.sign == 'овен' %}#}
+{#                         <h2>{{ quote.sign }}<img class="image-top" src="{% static 'img/signs/gold/1-ph.png' %}" /></h2>#}
+{#                    {% elif quote.sign == 'телец' %}#}
+{#                        <h2>{{ quote.sign }}<img class="image-top" src="{% static 'img/signs/gold/2-ph.png' %}" /></h2>#}
+{#                    {% elif quote.sign == 'близнаци' %}#}
+{#                        <h2>{{ quote.sign }}<img class="image-top" src="{% static 'img/signs/gold/3-ph.png' %}" /></h2>#}
+{#                    {% elif quote.sign == 'рак' %}#}
+{#                        <h2>{{ quote.sign }}<img class="image-top" src="{% static 'img/signs/gold/4-ph.png' %}" /></h2>#}
+{#                    {% elif quote.sign == 'лъв' %}#}
+{#                        <h2>{{ quote.sign }}<img class="image-top" src="{% static 'img/signs/gold/5-ph.png' %}" /></h2>#}
+{#                    {% elif quote.sign == 'дева' %}#}
+{#                        <h2>{{ quote.sign }}<img class="image-top" src="{% static 'img/signs/gold/6-ph.png' %}" /></h2>#}
+{#                    {% elif quote.sign == 'везни' %}#}
+{#                        <h2>{{ quote.sign }}<img class="image-top" src="{% static 'img/signs/gold/7-ph.png' %}" /></h2>#}
+{#                    {% elif quote.sign == 'скорпион' %}#}
+{#                        <h2>{{ quote.sign }}<img class="image-top" src="{% static 'img/signs/gold/8-ph.png' %}" /></h2>#}
+{#                    {% elif quote.sign == 'стрелец' %}#}
+{#                        <h2>{{ quote.sign }}<img class="image-top" src="{% static 'img/signs/gold/9-ph.png' %}" /></h2>#}
+{#                    {% elif quote.sign == 'козирог' %}#}
+{#                        <h2>{{ quote.sign }}<img class="image-top" src="{% static 'img/signs/gold/10-ph.png' %}" /></h2>#}
+{#                    {% elif quote.sign == 'водолей' %}#}
+{#                        <h2>{{ quote.sign }}<img class="image-top" src="{% static 'img/signs/gold/11-ph.png' %}" /></h2>#}
+{#                    {% elif quote.sign == 'риби' %}#}
+{#                        <h2>{{ quote.sign }}<img class="image-top" src="{% static 'img/signs/gold/12-ph.png' %}" /></h2>#}
+{##}
+{#                    {% endif %}#}
+                    <h5> {{ author.profession }} </h5>
+                    <h5> {{ author.description }} </h5>
+
+
+
+{#                    <div class="quote_detail_buttons">#}
+{#                        <a class="button details" href="{% url 'quote_details' quote.pk %}">Детайли</a>#}
+{#                        <a class="button edit" href="{% url 'edit_quote' quote.pk %}">Редактирай</a>#}
+{#                        <a class="button delete" href="{% url 'delete_quote' quote.pk %}">Изтрий</a>#}
+{#                    </div>#}
+                </div>
+            {% endfor %}
+
+
+
+        {% endif %}
+
+<!--end quotes container-->
+
+
+{% endblock %}

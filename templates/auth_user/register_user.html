@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+
+{% block content %}
+<form class="form"
+      method="POST"
+      enctype="multipart/form-data">
+    {% csrf_token %}
+{#    {% bootstrap_form user_form %}#}
+{#    {% bootstrap_form profile_form %}#}
+    {{ user_form }}
+    {{ profile_form }}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary"> Регистрирай се</button>
+        <p>or <a href="{%  url 'login_user' %}">Вход</a></p>
+    {% endbuttons %}
+
+</form>
+{% endblock %}

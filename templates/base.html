@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+        <link rel="icon" type="image/png" href="{% static 'img/stars/star-images-9468.png' %}">
+
+
+        <title>Quotes</title>
+
+
+    </head>
+
+    <body class="body-class" onload="changeBackground('{{ myVar|escapejs }}')">
+
+    <input type="hidden" id="colorTheme" name="colorTheme" value="{{ colorTheme }}">
+
+
+    <!--navigation bar-->
+{% include 'navbar.html' %}
+    <!--end navigation bar-->
+
+    <!--side bar-->
+{% include 'sidebar.html' %}
+    <!--end side bar-->
+
+
+{#    {% include 'quote_in_balloon.html' %}#}
+
+    {% block content %}
+        Do not appear.
+    {% endblock %}
+
+
+    {% include 'footer.html' %}
+
+
+    </body>
+</html>
