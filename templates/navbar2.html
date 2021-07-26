@@ -1,0 +1,30 @@
+{% load static %}
+
+<div class="navbar2">
+    <a href="/">Идеята</a>
+
+    <div class="dropdown">
+        <button class="dropbtn">Всички
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="{% url 'show_all_quotes' %}">Цитати</a>
+            <a href="{% url 'show_all_authors' %}">Автори</a>
+        </div>
+    </div>
+
+        <div class="dropdown">
+        <button class="dropbtn">Добави
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+
+            <a href="{% url 'add_quote' %}">Добави цитат</a>
+            <a href="{% url 'add_author' %}">Добави автор</a>
+        </div>
+    </div>
+
+    <a href="{% url 'change_quote' %}">Изтегли цитат</a>
+
+
+</div>

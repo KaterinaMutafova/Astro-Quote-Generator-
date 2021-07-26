@@ -1,14 +1,14 @@
 import json
 import random
-
 import simplejson
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-
-# Create your views here.
 from quote_generator.quotes.forms import QuoteForm, MyFilterForm, AuthorForm
 from quote_generator.quotes.models import Quote, Author
 
+
+# Create your views here.
 
 def base(request):
     quotes = Quote.objects.all()
@@ -19,7 +19,7 @@ def base(request):
     elif request.user.is_superuser:
         color_theme_index = 2
     else:
-        color_theme_index = 4
+        color_theme_index = 3
     context = {
         'quotes': quotes,
         'the_quote_object': the_quote_object,
@@ -28,6 +28,7 @@ def base(request):
     return render(request, 'index.html', context)
 
 
+@login_required(login_url='login_user')
 def add_quote(request):
     template = 'add_quote.html'
     if request.method == "GET":
@@ -107,7 +108,6 @@ def quote_details(request, pk):
 
     }
     return render(request, template, context)
-
 
 
 def change_quote(request):
@@ -194,6 +194,8 @@ def elements_index(request):
     return render(request, template)
 
 
+
+@login_required(login_url='login_user')
 def add_author(request):
     template = 'add_author.html'
     if request.method == "GET":
@@ -203,9 +205,10 @@ def add_author(request):
         }
         return render(request, template, context)
     form = AuthorForm(request.POST, request.FILES)
+    print(form)
     if form.is_valid():
         form.save()
-        return redirect(base)
+        return redirect('index')
     context = {
         'form': form,
     }

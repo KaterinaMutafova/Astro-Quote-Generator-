@@ -1,30 +1,30 @@
 function changeBackground() {
     var body = document.getElementsByTagName("body")[0]
     // BRIGHT COLOURFUL THEME
-    const colors1 = ["#ffcc99", "#ffbf80", "#ffb366", "#f2d7d5", "#fadbd8", "#f9ebea", "#fdedec", "#f5eef8", "#f4ecf7",
+    const colors0 = ["#ffcc99", "#ffbf80", "#ffb366", "#f2d7d5", "#fadbd8", "#f9ebea", "#fdedec", "#f5eef8", "#f4ecf7",
     "#ffa64d", "#ffcccc", "#ffb3b3", "#ff9999", "#ff8080", "#ff6666", "#ffb3ff",
     "#d1e0e0", "#c2d6d6", "#b3cccc", "#a3c2c2", " #94b8b8", "#85adad", "#75a3a3", "#669999", "#5c8a8a", "#527a7a"];
 
     // SKY BLUE THEME
-    const colors2 = ["#0a1429", "#0f1f3d", "#142952", "#193366", "#1f3d7a", "#24478f", "#2952a3", "#5499c7", "#2980b9",
+    const colors1 = ["#0a1429", "#0f1f3d", "#142952", "#193366", "#1f3d7a", "#24478f", "#2952a3", "#5499c7", "#2980b9",
         "CornflowerBlue", "MediumSlateBlue", "CadetBlue", "#5dade2", "#3498db", "#2e86c1", "#2874a6",
         "#21618c", "#1b4f72", "#eaf2f8", "#d4e6f1", "#a9cce3", "#7fb3d5"];
 
     // GREEN THEME
-    const colors3 = ["#148f77", "#17a589", "#1abc9c", "#48c9b0", "#76d7c4", "#a3e4d7", "#e8f6f3", "#d0ece7",
+    const colors2 = ["#148f77", "#17a589", "#1abc9c", "#48c9b0", "#76d7c4", "#a3e4d7", "#e8f6f3", "#d0ece7",
         "#a2d9ce", "#73c6b6", "#45b39d", "#16a085"];
 
     // LILAC THEME
-    const colors4 = ["#d7bde2", "#c39bd3", "#af7ac5", "#9b59b6", "#884ea0", "#76448a", "#f4ecf7", "#e8daef",
+    const colors3 = ["#d7bde2", "#c39bd3", "#af7ac5", "#9b59b6", "#884ea0", "#76448a", "#f4ecf7", "#e8daef",
         "#d2b4de", "#bb8fce", "#a569bd", "#8e44ad"];
 
     // SUNNY BRIGHT THEME
-    const colors5 = ["#fcf3cf", "#f9e79f", "#f7dc6f", "#f4d03f", "#f1c40f", "#d4ac0d", "#fdebd0", "#fad7a0",
+    const colors4 = ["#fcf3cf", "#f9e79f", "#f7dc6f", "#f4d03f", "#f1c40f", "#d4ac0d", "#fdebd0", "#fad7a0",
         "#f8c471", "#f5b041", "#f39c12", "#d68910"];
 
 
     let indexTheme = Number(document.getElementById("colorTheme").value);
-    let colorThemes = [colors1, colors2, colors3, colors4, colors5];
+    let colorThemes = [colors0, colors1, colors2, colors3, colors4];
     const colors = colorThemes[indexTheme];
     index = Math.floor(Math.random() * colors.length);
     body.style.backgroundColor = colors[index];

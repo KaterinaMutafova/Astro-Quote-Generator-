@@ -51,7 +51,7 @@ def register_user(request):
 
 
 
-def get_redirect_url(params,):
+def get_redirect_url(params):
     redirect_url = params.get('return_url')
     return redirect_url if redirect_url else 'index'
 

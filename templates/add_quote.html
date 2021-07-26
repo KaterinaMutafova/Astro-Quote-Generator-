@@ -6,8 +6,15 @@
 <form class="form"
       method="POST"
       enctype="multipart/form-data">
+    <input type="hidden" name="return_url" value="{{ request.GET.next }}">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Добави цитат" />
+    <button type="button" class="call_to_action" >
+
+        <a href="{% url 'add_author' %}"> Добави нов автор </a>
+
+    </button>
+
 </form>
 {% endblock %}
