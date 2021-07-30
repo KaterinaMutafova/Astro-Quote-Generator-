@@ -1,10 +1,8 @@
-import json
+
 import random
-import simplejson
-from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from quote_generator.quotes.forms import QuoteForm, MyFilterForm, AuthorForm
+from quote_generator.quotes.forms import QuoteForm, AuthorForm, MyElementForm
 from quote_generator.quotes.models import Quote, Author
 
 
@@ -42,7 +40,7 @@ def add_quote(request):
         quote = form.save(commit=False)
         quote.added_by = request.user
         quote.save()
-        return redirect(base)
+        return redirect(quote_details, pk=quote.pk)
     context = {
         'form': form
     }
@@ -62,7 +60,7 @@ def edit_quote(request, pk):
     if form.is_valid():
         quote = form.save()
         quote.save()
-        return redirect(show_all_quotes)
+        return redirect(quote_details, pk=pk)
     context = {
         'form': form,
     }
@@ -111,29 +109,30 @@ def quote_details(request, pk):
 
 
 def change_quote(request):
-    # Choose among  ALL QUOTES ---> working!!!
     template = 'quote_in_balloon.html'
     if request.method == "GET":
         quotes = Quote.objects.all()
         count_quotes = len(quotes)
         index = random.randint(1, count_quotes)
         quote = Quote.objects.get(pk=index)
-        filterform = MyFilterForm()
+        elementform = MyElementForm()
+
         context = {
             'quote': quote,
-            'filterform': filterform
+            'elementform': elementform,
         }
         return render(request, template, context)
 
-    filterform = MyFilterForm(request.POST or None)
+    elementform = MyElementForm(request.POST or None)
+
     quotes = ''
     chosen_sign = ''
     chosen_element = ''
 
-    if filterform.is_valid():
-        chosen_sign = filterform.cleaned_data['sign']
-        chosen_element = filterform.cleaned_data['element']
-        filterform.save()
+
+    if elementform.is_valid():
+        chosen_sign = elementform.cleaned_data['sign']
+        chosen_element = elementform.cleaned_data['element']
 
     if chosen_sign and chosen_element:
         quotes_signs = Quote.objects.filter(sign=chosen_sign)
@@ -149,9 +148,9 @@ def change_quote(request):
     the_quote_object = random.choice(quotes)
     context = {
         'the_quote_object': the_quote_object,
-        'filterform': filterform,
         'chosen_sign': chosen_sign,
         'chosen_element': chosen_element,
+        'elementform': elementform,
 
     }
     return render(request, template, context)

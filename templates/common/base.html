@@ -24,19 +24,22 @@
 
     </head>
 
-    <body class="body-class" onload="changeBackground('{{ myVar|escapejs }}')">
+    <body class="body-class" onload="changeBackground()">
 
     <input type="hidden" id="colorTheme" name="colorTheme" value="{{ colorTheme }}">
 
 
     <!--navigation bar-->
-{% include 'navbar.html' %}
+{% include 'common/navbar.html' %}
     <!--end navigation bar-->
 
-{% include 'navbar2.html' %}
+{#{% include 'navbar2.html' %}#}
+
+
+{#{% include 'navbar3.html' %}#}
 
     <!--side bar-->
-{% include 'sidebar.html' %}
+{% include 'common/sidebar.html' %}
     <!--end side bar-->
 
 
@@ -47,7 +50,7 @@
     {% endblock %}
 
 
-    {% include 'footer.html' %}
+    {% include 'common/footer.html' %}
 
 
     </body>

@@ -10,7 +10,8 @@ from django.shortcuts import render, redirect
 from .forms import RegisterForm, ProfileForm, LoginForm
 
 # Create your views here.
-
+from .models import UserProfile
+from ..quotes.models import Quote
 
 
 @transaction.atomic
@@ -66,21 +67,21 @@ def login_user(request):
             'login_form': login_form,
         }
         return render(request, template, context)
-    else:
-        login_form = LoginForm(request.POST)
-        return_url = get_redirect_url(request.POST)
-        if login_form.is_valid():
-            username = login_form.cleaned_data['username']
-            password = login_form.cleaned_data['password']
-            user = authenticate(username=username, password=password)
-            if user:
-                login(request, user)
-                return redirect(return_url)
 
-        context = {
+    login_form = LoginForm(request.POST)
+    return_url = get_redirect_url(request.POST)
+    if login_form.is_valid():
+        user = login_form.save()
+
+
+
+        login(request, user)
+        return redirect(return_url)
+
+    context = {
             'login_form': LoginForm(),
-        }
-        return render(request, template, context)
+    }
+    return render(request, template, context)
 
 
 def logout_user(request):
@@ -91,11 +92,26 @@ def logout_user(request):
 
 
 def profile_home_page(request):
-    pass
-    # profile = Profile.objects.first()
+    template = 'profile_home_page.html'
+    profile = UserProfile.objects.get(pk=request.user.id)
+    quotes_added_by_user = Quote.objects.filter(added_by=request.user.id)
+    if 'Regular user' in request.user.groups:
+        pass
+
+    context = {
+        'profile': profile,
+        'quotes_added_by_user': quotes_added_by_user,
+    }
+    return render(request, template, context)
+
     # if not profile:
     #     template = 'all_quotes.html'
     #     return render(request, template)
     # template = 'profile_home_page.html'
     # return render(request, template)
+
+
+def edit_profile(request):
+    profile = ProfileForm.objects.get(pk=request.user.id)
+
 

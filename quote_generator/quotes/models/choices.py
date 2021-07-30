@@ -12,6 +12,7 @@ TYPE_CHOICE_AQUARIUS = 'водолей'
 TYPE_CHOICE_PIECES = 'риби'
 
 ZODIAC_CHOICES = (
+    ('', '------'),
     (TYPE_CHOICE_ARIES, 'овен'),
     (TYPE_CHOICE_TAURUS, 'телец'),
     (TYPE_CHOICE_GEMINI, 'близнаци'),
@@ -32,6 +33,7 @@ ELEMENT_AIR = 'въздух'
 ELEMENT_WATER = 'вода'
 
 ELEMENT_CHOICES = (
+    ('', '------'),
     (ELEMENT_FIRE, 'огън'),
     (ELEMENT_EARTH, 'земя'),
     (ELEMENT_AIR, 'въздух'),

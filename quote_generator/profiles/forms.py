@@ -1,8 +1,28 @@
 from django import forms
-from django.contrib.auth import password_validation
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import password_validation, authenticate
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+
 from .models import UserProfile
+
+
+# PROFILE THEMES:
+
+bright_theme = 'шарено'
+sky_blue_theme = 'синьо небе'
+green_theme = 'зелено'
+lilac_theme = 'лилаво'
+sunny_theme = 'слънчево'
+
+THEME_CHOICES = (
+    ('', '------'),
+    ('0', 'шарено'),
+    ('1', 'синьо небе'),
+    ('2', 'зелено'),
+    ('3', 'лилаво'),
+    ('4', 'слънчево'),
+)
 
 
 class RegisterForm(UserCreationForm):
@@ -33,17 +53,52 @@ class RegisterForm(UserCreationForm):
         return email
 
 
+
 class ProfileForm(forms.ModelForm):
+    theme_profile = forms.ChoiceField(
+        label='Избери тема на профила',
+        widget=forms.Select,
+        choices=THEME_CHOICES,
+        required=False,
+    )
     class Meta:
         model = UserProfile
         exclude = ('user',)
 
 
+
+
+
 class LoginForm(forms.Form):
+    user = None
     username = forms.CharField(
         max_length=20,
+        widget=forms.TextInput(),
+        label=('Потребител')
     )
     password = forms.CharField(
         max_length=20,
-        widget=forms.PasswordInput(attrs={'class': 'form-control', 'type': 'password', 'align': 'center', 'placeholder':'password'})
+        widget=forms.PasswordInput(),
+        label=('Парола')
     )
+
+    def clean_password(self):
+        # username = self.cleaned_data['username']
+        # password = self.cleaned_data['password']
+
+        self.user = authenticate(
+            username=self.cleaned_data['username'],
+            password=self.cleaned_data['password'],
+        )
+        if not self.user:
+            self.user.clean()
+            raise ValidationError("Грешен потребител или парола.")
+
+
+    def save(self):
+        return self.user
+
+
+
+
+

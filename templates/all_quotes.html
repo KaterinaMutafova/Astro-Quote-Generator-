@@ -1,5 +1,5 @@
-{% extends 'base.html' %}
-
+{% extends 'common/base.html' %}
+{% load my_filter %}
 {% load static %}
 
 {% block content %}
@@ -14,7 +14,8 @@
 
             {% for quote in quotes %}
                 <div class="quote-container">
-                    <h2>{{ quote.author }}<img class="image-above" src="{% static 'img/elements.jpg' %}" /></h2>
+{#                <img class="image-above" src="{% static 'img/elements.jpg' %}" />#}
+                    <h2>{{ quote.author }}</h2>
                     {% if quote.element == 'огън' %}
                         <h2>{{ quote.element }}<img class="image-base" src="{% static 'img/fire.jpg' %}" /></h2>
                     {% elif quote.element == 'земя'%}
@@ -53,7 +54,7 @@
 
                     {% endif %}
 
-                    <h5> {{ quote.quote }} </h5>
+                    <h5> {{ quote.quote|quotation_marks|truncatechars:50}} </h5>
 
 
 

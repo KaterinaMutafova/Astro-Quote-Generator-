@@ -1,5 +1,5 @@
-{% extends 'base.html' %}
-
+{% extends 'common/base.html' %}
+{% load my_filter %}
 {% load static %}
 
 <!--generate button for quote-->
@@ -28,10 +28,9 @@
 {#    <a href="{% url 'change_quote' %}">A-link</a>#}
 
 
-
 <div class="big">
 <h3> Цитат от звездите специално за  теб</h3>
-<p class="balloon"> {{ the_quote_object.quote }} </p>
+<p class="balloon"> {{ the_quote_object.quote|quotation_marks }} </p>
     <div>
 {% if the_quote_object.image %}
     <img class="img-balloon" src="{{ the_quote_object.image.url }}" alt="NOT SHOWING"/>
@@ -56,29 +55,27 @@
     <p class="simple"> <b>Избрана стихия: </b> {{ chosen_element }}</p>
     <p class="simple"> <b>Избран зодиакален знак: </b> {{ chosen_sign }}</p>
 
-
+    <p> </p>
     <form class="form"
       method="post"
       action="{% url 'change_quote' %}"
       enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ filterform.sign }}
-    {{ filterform.element }}
+        {% csrf_token %}
+        <b> {{ elementform.sign.label }} </b>
+        {{ elementform.sign }}
+        <b> {{ elementform.element.label }} </b>
+        {{ elementform.element }}
 
-    <button type="submit">Натисни тук!</button>
+    <button type="submit">Изтегли цитат</button>
     </form>
 
     </div>
 
 
 
-
 </div>
 
-
-
 </div>
-
 
 
 {% endblock %}

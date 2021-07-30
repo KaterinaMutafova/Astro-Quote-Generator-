@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'common/base.html' %}
 {% load bootstrap4 %}
 {% load static %}
 
@@ -8,7 +8,9 @@
       method="POST"
       enctype="multipart/form-data">
     {% csrf_token %}
-    {% bootstrap_form login_form %}
+{#    {% bootstrap_form login_form %}#}
+    {{ login_form }}
+
 
     {% buttons %}
         <button type="submit" class="btn btn-primary"> Влез </button>

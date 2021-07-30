@@ -1,0 +1,73 @@
+{% extends 'common/base.html' %}
+{% load my_filter %}
+{% load static %}
+
+{% block content %}
+
+
+        <div class="body">
+            <!--headings-->
+            <h1 id="main_heading">Профилът на {{ request.user.username }}</h1>
+            <!--end headings-->
+
+            <!--profile details container TODO-->
+            <div class="quote-container">
+                <h2>Здравей, {{ request.user.username }}!
+                {% if 'Regular user' in request.user.groups %}
+                    Ти си в групата на начинаещите потребители. <br>
+                    Ако искаш да преминеш към групата на напредналите <br>
+                    да получиш специални ефекти в сайта, <br>
+                    трябва да добавиш 10 цитата  в базата данни <br>
+                    и те  бъдат одобрени от администраторите. <br>
+                {% elif 'Special user' in request.user.groups %}
+                    Ти в групата на напредналите и имаш специални <br>
+                    екстри в профила си. Избери си тема на стената.
+
+                {% endif %}
+
+                    {{ profile.first_name }} {{ profile.last_name }}
+
+                    {{ messages }}
+
+
+                    {% if profile.profile_image %}
+                        <img class="img-balloon" src="{{ profile.profile_image.url }}" />
+                    {% else %}
+                        <img class="img-balloon" src="{% static 'img/default_pics/default_profile.jpg' %}" />
+                    {% endif %}
+
+                </h2>
+
+{#                <p>Age: {{ profile.date_of_birth }}</p>#}
+                <div>
+                    <p class="simple-left"><b>Брой добавени цитати: </b> {{ quotes_added_by_user|length }}</p>
+                    <p class="simple-left"><b>Дата на  раждане: </b>{{ profile.date_of_birth }}</p>
+                </div>
+                <div class="right">
+{#                    <a class="button delete" href="{%  url 'delete_profile' %}">Delete</a>#}
+                </div>
+            </div>
+            <!--end profile details container-->
+            <h2 id="main_heading">Добавени цитати от {{ request.user.username }}</h2>
+
+
+            {% if quotes_added_by_user %}
+                {% for added_quote in quotes_added_by_user %}
+                    <div class="quote-container">
+
+                        <p class="simple-left"> <b>Автор: </b> {{  added_quote.author }}</p>
+                        <p class="simple-left"> <b>Стихия: </b>{{  added_quote.element }}</p>
+                        <p class="simple-left"> <b>Зодиакален знак: </b> {{  added_quote.sign }}</p>
+                        <p class="simple-left"> <b>Номер на цитата: </b> {{  added_quote.pk }}</p>
+                        <p class="simple-left"> {{ added_quote.quote|quotation_marks|truncatechars:50 }} </p>
+
+                    </div>
+                {% endfor %}
+
+            {% endif %}
+
+        </div>
+
+{% endblock %}
+
+

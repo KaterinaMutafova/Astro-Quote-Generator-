@@ -1,0 +1,73 @@
+{% load static %}
+
+
+        <header>
+            <a href="{% url 'index' %}">
+                <div class="container-top-image">
+                    <img src="{% static 'img/signs/thin_double_zodiac.jpg' %}" id="front-logo-img" style="width: 100%;">
+                    <div class="centered">ЗНАНИЕ ОТ ЗВЕЗДИТЕ</div>
+
+                </div>
+            </a>
+
+            <nav>
+                <div class="star-link">
+                    <a href="{% url 'index' %}">
+                        <img id="img-logo-fixed" src="{% static 'img/stars/star-1.png' %}"/>
+                        <img id="img-logo-absolute" src="{% static 'img/stars/star-1.png' %}"/>
+
+                    </a>
+                </div>
+                <ul>
+
+                    <li>
+                        <a href="/">Идеята</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="true" aria-expanded="false">Покажи</a>
+                        <div class="dropdown-menu">
+                            <a href="{% url 'show_all_quotes' %}">Цитати</a>
+                            <a href="{% url 'show_all_authors' %}">Автори</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <div class="dropdown-menu">
+                            <a href="{% url 'add_quote' %}">Добави цитат</a>
+                            <a href="{% url 'add_author' %}">Добави автор</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{% url 'change_quote' %}">Изтегли цитат</a>
+                    </li>
+
+
+
+                    <li class="right">
+{#                        <a href="{% url 'base' %}">Вход</a>#}
+
+
+                        {% if request.user.is_authenticated %}
+                            <div class="dropdown-menu">
+                                <a href="{% url 'profile_home_page' %}">Профил</a>
+                                <p>Здравей, {{ request.user }}</p>
+                                <a href="{%  url 'logout_user' %}">Изход</a>
+                            </div>
+                        {% else %}
+                            <a href="{% url 'register_user' %}">Регистрация</a>
+                            <a href="{%  url 'login_user' %}">Вход</a>
+                        {% endif %}
+
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+
+
+
+
+
+
+
+

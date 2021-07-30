@@ -1,5 +1,5 @@
-{% extends 'base.html' %}
-
+{% extends 'common/base.html' %}
+{% load my_filter %}
 {% load static %}
 
 <!--generate button for quote-->
@@ -23,7 +23,7 @@
 {% if the_quote_object.image %}
     <img class="img-balloon" src="{{ the_quote_object.image.url }}" alt="NOT SHOWING"/>
 {% elif the_quote_object.element == 'огън' %}
-    <img class="img-balloon" src="{% static 'img/fire-hor.jpg'  %}" alt="NOT SHOWING"/>
+    <img class="img-balloon" src="{% static 'img/fire-hor.jpg' %}" alt="NOT SHOWING"/>
 {% elif the_quote_object.element == 'земя' %}
     <img class="img-balloon" src="{% static 'img/earth-hor.jpg' %}" alt="NOT SHOWING"/>
 {% elif the_quote_object.element == 'въздух' %}
@@ -33,7 +33,7 @@
 {% endif %}
     </div>
 
-<p class="balloon"> {{ the_quote_object.quote }} </p>
+<p class="balloon"> {{ the_quote_object.quote|quotation_marks }} </p>
 
     <div class="quote_detail_buttons">
 
