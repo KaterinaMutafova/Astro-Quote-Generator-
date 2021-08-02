@@ -11,22 +11,15 @@
 
 
         <title>Quotes</title>
-{#        <style>#}
-{#            @font-face {#}
-{#                font-family: bgcyrillic;#}
-{#                src: url(http://bgkalendar.com/fonts/notoserif-regular.php);#}
-{#    }#}
-{#    * {#}
-{#        font-family: bgcyrillic, fantasy;#}
-{#    }#}
-{#  </style>#}
+
 
 
     </head>
 
     <body class="body-class" onload="changeBackground()">
 
-    <input type="hidden" id="colorTheme" name="colorTheme" value="{{ colorTheme }}">
+
+{% include 'common/color_theme.html' %}
 
 
     <!--navigation bar-->
@@ -37,6 +30,15 @@
 
 
 {#{% include 'navbar3.html' %}#}
+
+{% if not request.user.is_anonymous %}
+    <p class="greetings"> Здравей, {{ request.user.username }}! </p>
+{#    <p class="greetings"> Добави 10 цитата и/или автори и ще се превърнеш в специален потребител#}
+{#                с възможност да сменяш фона на стената си. </p>#}
+{% endif %}
+
+
+
 
     <!--side bar-->
 {% include 'common/sidebar.html' %}

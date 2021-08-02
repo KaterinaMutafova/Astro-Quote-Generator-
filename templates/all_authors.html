@@ -16,7 +16,7 @@
                 <div class="quote-container">
                     <h2>{{ author.name }}
                         {% if author.image %}
-                            {{ author.image.url }}
+                            {{ author.image }}
                         {% else %}
                             <img class="image-above" src="{% static 'img/elements.jpg' %}" />
                         {% endif %}

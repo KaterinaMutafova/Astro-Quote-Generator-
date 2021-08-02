@@ -2,37 +2,38 @@
 import random
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+
+from quote_generator.profiles.models import UserProfile
 from quote_generator.quotes.forms import QuoteForm, AuthorForm, MyElementForm
 from quote_generator.quotes.models import Quote, Author
 
 
 # Create your views here.
 
+def get_color_theme(request):
+    pass
+
+
 def base(request):
     quotes = Quote.objects.all()
     the_quote_object = random.choice(quotes)
-    color_theme_index = 0
-    if request.user.is_anonymous:
-        color_theme_index = 0
-    elif request.user.is_superuser:
-        color_theme_index = 2
-    else:
-        color_theme_index = 3
+
     context = {
         'quotes': quotes,
         'the_quote_object': the_quote_object,
-        "colorTheme": color_theme_index,
+
     }
     return render(request, 'index.html', context)
 
 
-@login_required(login_url='login_user')
+@login_required()
 def add_quote(request):
-    template = 'add_quote.html'
+    template = 'quotes/add_quote.html'
     if request.method == "GET":
         form = QuoteForm()
         context = {
-            'form': form
+            'form': form,
+
         }
         return render(request, template, context)
     form = QuoteForm(request.POST, request.FILES)
@@ -42,14 +43,14 @@ def add_quote(request):
         quote.save()
         return redirect(quote_details, pk=quote.pk)
     context = {
-        'form': form
+        'form': form,
     }
     return render(request, template, context)
 
 
 def edit_quote(request, pk):
     quote = Quote.objects.get(pk=pk)
-    template = 'edit_quote.html'
+    template = 'quotes/edit_quote.html'
     if request.method == 'GET':
         form = QuoteForm(instance=quote)
         context = {
@@ -67,9 +68,10 @@ def edit_quote(request, pk):
     return render(request, template, context)
 
 
+
 def delete_quote(request, pk):
     quote = Quote.objects.get(pk=pk)
-    template = 'delete_quote.html'
+    template = 'quotes/delete_quote.html'
     if request.method == "GET":
         form = QuoteForm(instance=quote)
         for name, field in form.fields.items():
@@ -77,6 +79,7 @@ def delete_quote(request, pk):
         form.save(commit=False)
         context = {
             'form': form,
+
         }
         return render(request, template, context)
     quote.delete()
@@ -87,7 +90,7 @@ def quote_details(request, pk):
     the_quote_object = Quote.objects.get(pk=pk)
     quotes = Quote.objects.all()
     count_quotes = len(quotes)
-    template = 'quote_details.html'
+    template = 'quotes/quote_details.html'
     if the_quote_object.pk == 1:
         prev_pk = count_quotes
     else:
@@ -104,10 +107,12 @@ def quote_details(request, pk):
         'next_quote': next_quote,
         'count_quotes': count_quotes,
 
+
     }
     return render(request, template, context)
 
 
+@login_required()
 def change_quote(request):
     template = 'quote_in_balloon.html'
     if request.method == "GET":
@@ -128,28 +133,30 @@ def change_quote(request):
     quotes = ''
     chosen_sign = ''
     chosen_element = ''
+    chosen_moon_sign = ''
 
 
     if elementform.is_valid():
         chosen_sign = elementform.cleaned_data['sign']
         chosen_element = elementform.cleaned_data['element']
+        chosen_moon_sign = elementform.cleaned_data['moon']
 
-    if chosen_sign and chosen_element:
         quotes_signs = Quote.objects.filter(sign=chosen_sign)
         quotes_elements = Quote.objects.filter(element=chosen_element)
-        quotes = quotes_signs.union(quotes_elements)
-    elif chosen_sign:
-        quotes = Quote.objects.filter(sign=chosen_sign)
-    elif chosen_element:
-        quotes = Quote.objects.filter(element=chosen_element)
-    else:
-        quotes = Quote.objects.all()
+        quotes_moon_sign = Quote.objects.filter(sign=chosen_moon_sign)
+
+        if chosen_sign or chosen_element or quotes_moon_sign:
+            quotes = quotes_signs | quotes_elements | quotes_moon_sign
+        else:
+            quotes = Quote.objects.all()
+
 
     the_quote_object = random.choice(quotes)
     context = {
         'the_quote_object': the_quote_object,
         'chosen_sign': chosen_sign,
         'chosen_element': chosen_element,
+        'chosen_moon_sign': chosen_moon_sign,
         'elementform': elementform,
 
     }
@@ -194,9 +201,9 @@ def elements_index(request):
 
 
 
-@login_required(login_url='login_user')
+@login_required()
 def add_author(request):
-    template = 'add_author.html'
+    template = 'authors/add_author.html'
     if request.method == "GET":
         form = AuthorForm()
         context = {

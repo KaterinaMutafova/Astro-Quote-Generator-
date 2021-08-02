@@ -1,0 +1,20 @@
+{% extends 'common/base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+
+{% block content %}
+<form class="form"
+      method="POST"
+      enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ form }}
+
+    {% buttons %}
+        <button type="submit" class="btn btn-primary"> Редактирай </button>
+
+    {% endbuttons %}
+
+</form>
+{% endblock %}

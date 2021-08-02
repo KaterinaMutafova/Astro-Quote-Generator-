@@ -54,6 +54,7 @@
     <p class="simple"> <b>Автор: </b> {{  the_quote_object.author }}</p>
     <p class="simple"> <b>Избрана стихия: </b> {{ chosen_element }}</p>
     <p class="simple"> <b>Избран зодиакален знак: </b> {{ chosen_sign }}</p>
+        <p class="simple"> <b>Избран лунен знак: </b> {{ chosen_moon_sign }}</p>
 
     <p> </p>
     <form class="form"
@@ -61,10 +62,14 @@
       action="{% url 'change_quote' %}"
       enctype="multipart/form-data">
         {% csrf_token %}
-        <b> {{ elementform.sign.label }} </b>
-        {{ elementform.sign }}
         <b> {{ elementform.element.label }} </b>
         {{ elementform.element }}
+        <b> {{ elementform.sign.label }} </b>
+        {{ elementform.sign }}
+        <b> {{ elementform.moon.label }} </b>
+        {{ elementform.moon }}
+
+
 
     <button type="submit">Изтегли цитат</button>
     </form>

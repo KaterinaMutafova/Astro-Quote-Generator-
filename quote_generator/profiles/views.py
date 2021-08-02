@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from django.shortcuts import render
 # from quote_generator.profiles.models import Profile
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, User
 from django.db import transaction
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -17,6 +17,7 @@ from ..quotes.models import Quote
 @transaction.atomic
 def register_user(request):
     logout(request)
+    registered = False
     template = 'auth_user/register_user.html'
     if request.method == "GET":
         context = {
@@ -27,12 +28,14 @@ def register_user(request):
     else:
         user_form = RegisterForm(request.POST)
         profile_form = ProfileForm(request.POST, request.FILES)
-        if user_form.is_valid() and profile_form.is_valid():
+        if user_form.is_valid():
             user = user_form.save()
             profile = profile_form.save(commit=False)
             profile.user = user
+            profile.theme_profile = 1
             group = Group.objects.get(name='Regular user')
             user.groups.add(group)
+
             pic = 'profile_image'
             if pic in request.FILES:
                 profile.profile_image = request.FILES[pic]
@@ -43,12 +46,13 @@ def register_user(request):
         else:
             print(user_form.errors, profile_form.errors)
 
-        context = {
-            'user_form': user_form,
-            'profile_form': profile_form,
-        }
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form,
+        'registered': registered,
+    }
 
-        return render(request, template, context)
+    return render(request, template, context)
 
 
 
@@ -72,9 +76,6 @@ def login_user(request):
     return_url = get_redirect_url(request.POST)
     if login_form.is_valid():
         user = login_form.save()
-
-
-
         login(request, user)
         return redirect(return_url)
 
@@ -92,15 +93,19 @@ def logout_user(request):
 
 
 def profile_home_page(request):
-    template = 'profile_home_page.html'
+    template = 'auth_user/profile_home_page.html'
+    user = User.objects.get(pk=request.user.id)
     profile = UserProfile.objects.get(pk=request.user.id)
     quotes_added_by_user = Quote.objects.filter(added_by=request.user.id)
-    if 'Regular user' in request.user.groups:
-        pass
+    color_theme = profile.theme_profile
+    # if request.user.groups.filter(name='Regular user').exists():
+
+
 
     context = {
         'profile': profile,
         'quotes_added_by_user': quotes_added_by_user,
+        'color_theme': color_theme,
     }
     return render(request, template, context)
 
@@ -111,7 +116,23 @@ def profile_home_page(request):
     # return render(request, template)
 
 
-def edit_profile(request):
-    profile = ProfileForm.objects.get(pk=request.user.id)
+def edit_profile(request, pk):
+    template = 'auth_user/edit_profile.html'
+    profile = UserProfile.objects.get(pk=pk)
+    if request.method == "GET":
+        form = ProfileForm(instance=profile)
+        context = {
+            'form': form,
+        }
+        return render(request, template, context)
+    form = ProfileForm(request.POST, request.FILES, instance=profile)
+    if form.is_valid():
+        profile = form.save()
+        profile.save()
+        return redirect(profile_home_page)
+    context = {
+        'form': form,
+    }
+    return render(request, template, context)
 
 

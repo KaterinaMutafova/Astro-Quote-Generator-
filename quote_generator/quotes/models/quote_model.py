@@ -14,7 +14,11 @@ class Quote(models.Model):
         null=False,
         blank=False,
     )
-    author = models.ForeignKey('quotes.Author', related_name='quotes', on_delete=models.SET('unknown'))
+    author = models.ForeignKey(
+        'quotes.Author',
+        related_name='quotes',
+        on_delete=models.SET('unknown'),
+    )
 
     sign = models.CharField(
         max_length=20,
@@ -25,6 +29,8 @@ class Quote(models.Model):
     element = models.CharField(
         max_length=15,
         choices=ELEMENT_CHOICES,
+        null=True,
+        blank=True,
     )
     image = models.ImageField(
         upload_to='quotes_pics',
@@ -34,6 +40,8 @@ class Quote(models.Model):
     added_by = models.ForeignKey(
         User,
         on_delete=models.SET('unknown'),
+        null=True,
+        blank=True,
     )
 
 

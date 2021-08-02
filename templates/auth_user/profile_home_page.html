@@ -12,40 +12,50 @@
 
             <!--profile details container TODO-->
             <div class="quote-container">
-                <h2>Здравей, {{ request.user.username }}!
-                {% if 'Regular user' in request.user.groups %}
-                    Ти си в групата на начинаещите потребители. <br>
-                    Ако искаш да преминеш към групата на напредналите <br>
-                    да получиш специални ефекти в сайта, <br>
-                    трябва да добавиш 10 цитата  в базата данни <br>
-                    и те  бъдат одобрени от администраторите. <br>
-                {% elif 'Special user' in request.user.groups %}
-                    Ти в групата на напредналите и имаш специални <br>
-                    екстри в профила си. Избери си тема на стената.
 
+            <div class="picture">
+                {% if profile.profile_image %}
+                    <img src="{{ profile.profile_image.url }}" />
+                {% else %}
+                    <img src="{% static 'img/default_pics/default_profile.jpg' %}" />
                 {% endif %}
+            </div>
+
+
+                <h2>Здравей, {{ request.user.username }}! </h2>
+
+
+
+{#                {% if request.user.groups.filter(name='Regular user').exists() %}#}
+{#                    Ти си в групата на начинаещите потребители. <br>#}
+{#                    Ако искаш да преминеш към групата на напредналите <br>#}
+{#                    да получиш специални ефекти в сайта, <br>#}
+{#                    трябва да добавиш 10 цитата  в базата данни <br>#}
+{#                    и те  бъдат одобрени от администраторите. <br>#}
+{#                {% elif request.user.groups.filter(name='Special user').exists() %}#}
+{#                    Ти в групата на напредналите и имаш специални <br>#}
+{#                    екстри в профила си. Избери си тема на стената.#}
+{##}
+{#                {% endif %}#}
 
                     {{ profile.first_name }} {{ profile.last_name }}
 
-                    {{ messages }}
 
 
-                    {% if profile.profile_image %}
-                        <img class="img-balloon" src="{{ profile.profile_image.url }}" />
-                    {% else %}
-                        <img class="img-balloon" src="{% static 'img/default_pics/default_profile.jpg' %}" />
-                    {% endif %}
-
-                </h2>
 
 {#                <p>Age: {{ profile.date_of_birth }}</p>#}
                 <div>
+                    <p class="simple-left">Фон на профила: {{ profile.theme_profile }} </p>
                     <p class="simple-left"><b>Брой добавени цитати: </b> {{ quotes_added_by_user|length }}</p>
                     <p class="simple-left"><b>Дата на  раждане: </b>{{ profile.date_of_birth }}</p>
                 </div>
-                <div class="right">
-{#                    <a class="button delete" href="{%  url 'delete_profile' %}">Delete</a>#}
+
+                <div class="quote_detail_buttons">
+                    <a class="button edit" href="{% url 'edit_profile' profile.pk %}">Редактирай</a>
+{#                    <a class="button delete" href="{% url 'show_all_quotes' %}">Изтрий</a>#}
                 </div>
+
+
             </div>
             <!--end profile details container-->
             <h2 id="main_heading">Добавени цитати от {{ request.user.username }}</h2>

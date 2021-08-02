@@ -1,0 +1,6 @@
+{% load static %}
+{% load my_simple_tag %}
+
+
+<input type="hidden" id="colorTheme" name="colorTheme" value="{% get_color_theme request%}">
+<input type="text" value="{% get_color_theme request%}">

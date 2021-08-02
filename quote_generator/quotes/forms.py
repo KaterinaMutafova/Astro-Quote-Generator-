@@ -43,6 +43,12 @@ class MyElementForm(forms.Form):
         choices=ZODIAC_CHOICES,
         required=False,
     )
+    moon = forms.ChoiceField(
+        label='Избери лунен знак',
+        widget=forms.Select,
+        choices=ZODIAC_CHOICES,
+        required=False,
+    )
 
 
 

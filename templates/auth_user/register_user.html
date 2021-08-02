@@ -7,11 +7,15 @@
 <form class="form"
       method="POST"
       enctype="multipart/form-data">
+    <input type="hidden" name="return_url" value="{{ request.GET.next }}">
     {% csrf_token %}
-{#    {% bootstrap_form user_form %}#}
+    {% bootstrap_form user_form %}
 {#    {% bootstrap_form profile_form %}#}
-    {{ user_form }}
-    {{ profile_form }}
+{#    {{ user_form }}#}
+{#    {{ profile_form }}#}
+{#    {{ profile_form.date_of_birth.label }}#}
+{#    {{ profile_form.date_of_birth }}#}
+
     {% buttons %}
         <button type="submit" class="btn btn-primary"> Регистрирай се</button>
         <p>or <a href="{%  url 'login_user' %}">Вход</a></p>

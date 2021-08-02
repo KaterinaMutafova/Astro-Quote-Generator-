@@ -32,9 +32,11 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="true" aria-expanded="false">Добави</a>
                         <div class="dropdown-menu">
-                            <a href="{% url 'add_quote' %}">Добави цитат</a>
-                            <a href="{% url 'add_author' %}">Добави автор</a>
+                            <a href="{% url 'add_quote' %}">Цитат</a>
+                            <a href="{% url 'add_author' %}">Автор</a>
                         </div>
                     </li>
                     <li>
@@ -50,8 +52,9 @@
                         {% if request.user.is_authenticated %}
                             <div class="dropdown-menu">
                                 <a href="{% url 'profile_home_page' %}">Профил</a>
-                                <p>Здравей, {{ request.user }}</p>
                                 <a href="{%  url 'logout_user' %}">Изход</a>
+
+
                             </div>
                         {% else %}
                             <a href="{% url 'register_user' %}">Регистрация</a>
