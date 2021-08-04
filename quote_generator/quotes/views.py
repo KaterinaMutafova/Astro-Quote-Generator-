@@ -9,6 +9,8 @@ from quote_generator.quotes.models import Quote, Author
 
 
 # Create your views here.
+from quote_generator.quotes.models.like_model import Like
+
 
 def get_color_theme(request):
     pass
@@ -95,18 +97,27 @@ def quote_details(request, pk):
         prev_pk = count_quotes
     else:
         prev_pk = pk -1
+
     if the_quote_object.pk == count_quotes:
         next_pk = 1
     else:
         next_pk = pk + 1
     prev_quote = Quote.objects.get(pk=prev_pk)
     next_quote = Quote.objects.get(pk=next_pk)
+
+    the_quote_object.likes_count = the_quote_object.like_set.count()
+    is_added_by_the_user = the_quote_object.user == request.user
+    is_liked_by_user = the_quote_object.like_set.filter(user_id=request.user.id) \
+        .exists()
+
+
     context = {
         'the_quote_object': the_quote_object,
         'prev_quote': prev_quote,
         'next_quote': next_quote,
         'count_quotes': count_quotes,
-
+        'is_added_by_the_user': is_added_by_the_user,
+        'is_liked_by_user': is_liked_by_user,
 
     }
     return render(request, template, context)
@@ -196,7 +207,6 @@ def elements_index(request):
     template = 'elements_index.html'
 
 
-
     return render(request, template)
 
 
@@ -221,3 +231,16 @@ def add_author(request):
     return render(request, template, context)
 
 
+@login_required
+def like_quote(request, pk):
+    the_quote = Quote.objects.get(pk=pk)
+    like_quote_by_user = the_quote.like_set.filter(user_id=request.user.id).first()
+    if like_quote_by_user:
+        like_quote_by_user.delete()
+    else:
+        like = Like(
+            quote=the_quote,
+            user=request.user,
+        )
+        like.save()
+    return redirect('quote_details', the_quote.id)

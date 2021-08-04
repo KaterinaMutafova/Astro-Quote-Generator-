@@ -9,7 +9,29 @@
       enctype="multipart/form-data">
     {% csrf_token %}
 
-    {{ form }}
+    {{ form.date_of_birth.label }}
+    {{ form.date_of_birth }}
+
+    {{ form.first_name.label }}
+    {{ form.first_name }}
+
+    {{ form.last_name.label }}
+    {{ form.last_name }}
+
+    {% if quotes_added_by_user|length >= 10 %}
+        {{ form.theme_profile.label }}
+        {{ form.theme_profile }}
+    {% else %}
+        <p class="simple">Специална функция</p>
+        <p class="simple-left-red">
+            <b>Прибавете 10 цитата към базата данни и ще получите
+               специалната функция да променяте фона на стената си!</b>
+        </p>
+        <br>
+    {% endif %}
+    {{ form.profile_image.label }}
+    {{ form.profile_image }}
+
 
     {% buttons %}
         <button type="submit" class="btn btn-primary"> Редактирай </button>

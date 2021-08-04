@@ -60,7 +60,7 @@
 {##}
 {#                    {% endif %}#}
                     <h5> {{ author.profession }} </h5>
-                    <h5> {{ author.description }} </h5>
+                    <h5> {{ author.description|truncatechars:50 }} </h5>
 
 
 

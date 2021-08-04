@@ -124,6 +124,7 @@ p.balloon {
 
 p.simple {
     margin: 7px 0px 7px 0px;
+    font-style: normal;
 }
 
 p.simple-left {
@@ -133,13 +134,33 @@ p.simple-left {
 
 }
 
+p.simple-left-red {
+    margin: 7px 0px 7px 0px;
+    alignment: left;
+    color: red;
+    display: block;
+    border: 5px solid rgb(71, 71, 71);
+    border-radius: 0.5cm;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: white;
+    /*margin: 5px 0 10px 0;*/
+    /*text-shadow: 5px 5px 10px #c3decb, 0 0 10px black;*/
+
+
+}
+
 .greetings {
+    display: inherit;
     position: relative;
     text-align: right;
     margin-right: 3%;
     margin-top: 1%;
+    margin-bottom: 1%;
     font-size: 18px;
     text-shadow: 0 0 10px #c3decb, 0 0 10px black;
+
 
 }
 
@@ -286,6 +307,38 @@ nav ul li.right a:hover {
 /*    opacity : 1;*/
 /*}*/
 
+.likes {
+    position: relative;
+    max-height: 50px;
+    margin-left: 0;
+
+}
+
+
+.img-star-like-empty {
+    position: relative;
+    left: 0;
+    max-width: 40px;
+
+
+}
+
+.img-star-like-empty:hover {
+    opacity: 0%;
+}
+
+.img-star-like-full {
+    position: relative;
+    max-width: 40px;
+    opacity: 50%;
+
+
+
+}
+
+.img-star-like-full:hover {
+    opacity: 100%;
+}
 
 
 

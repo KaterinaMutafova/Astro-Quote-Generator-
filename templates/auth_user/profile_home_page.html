@@ -38,17 +38,25 @@
 {##}
 {#                {% endif %}#}
 
-                    {{ profile.first_name }} {{ profile.last_name }}
+
 
 
 
 
 {#                <p>Age: {{ profile.date_of_birth }}</p>#}
                 <div>
+                    <p class="simple-left">Име: {{ profile.first_name }} </p>
+                    <p class="simple-left">Фамилия: {{ profile.last_name }} </p>
                     <p class="simple-left">Фон на профила: {{ profile.theme_profile }} </p>
                     <p class="simple-left"><b>Брой добавени цитати: </b> {{ quotes_added_by_user|length }}</p>
-                    <p class="simple-left"><b>Дата на  раждане: </b>{{ profile.date_of_birth }}</p>
+                    <p class="simple-left"><b>Дата на  раждане: </b> {{ profile.date_of_birth }}</p>
                 </div>
+                {% if profile.is_complete %}
+                    <p class="greetings">Your profile is completed.</p>
+                {% else %}
+                    <p class="greetings">Your profile </p>
+                    <p class="greetings">is NOT completed.</p>
+                {% endif %}
 
                 <div class="quote_detail_buttons">
                     <a class="button edit" href="{% url 'edit_profile' profile.pk %}">Редактирай</a>

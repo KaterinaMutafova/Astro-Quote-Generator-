@@ -1,3 +1,4 @@
+import datetime
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -5,11 +6,11 @@ from django.db import models
 
 # PROFILE THEMES:
 
-bright_theme = 'шарено'
-sky_blue_theme = 'синьо небе'
-green_theme = 'зелено'
-lilac_theme = 'лилаво'
-sunny_theme = 'слънчево'
+# bright_theme = 'шарено'
+# sky_blue_theme = 'синьо небе'
+# green_theme = 'зелено'
+# lilac_theme = 'лилаво'
+# sunny_theme = 'слънчево'
 
 THEME_CHOICES = (
     ('', '------'),
@@ -18,23 +19,27 @@ THEME_CHOICES = (
     ('2', 'зелено'),
     ('3', 'лилаво'),
     ('4', 'слънчево'),
+    ('5', 'оранжево небето'),
+    ('6', 'сива буря'),
 )
 
 
 class UserProfile(models.Model):
-    date_of_birth = models.DateTimeField()
+    date_of_birth = models.DateTimeField(
+        null=True,
+        blank=True,
+    )
     # date_of_registration = models.DateTimeField()
-    # first_name = models.CharField(
-    #     max_length=20,
-    # )
-    # last_name = models.CharField(
-    #     max_length=20,
-    # )
-    # age = models.PositiveIntegerField(
-    #     null=True,
-    #     blank=True,
-    # )
-
+    first_name = models.CharField(
+        max_length=20,
+        null=True,
+        blank=True,
+    )
+    last_name = models.CharField(
+        max_length=20,
+        null=True,
+        blank=True,
+    )
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
@@ -52,26 +57,7 @@ class UserProfile(models.Model):
         blank=True,
         null=True,
     )
-
-
-
-
-
-
-
-# class Profile(models.Model):
-#     first_name = models.CharField(
-#         max_length=20,
-#     )
-#     last_name = models.CharField(
-#         max_length=20,
-#     )
-#     age = models.PositiveIntegerField(
-#         null=True,
-#         blank=True,
-#     )
-#     image_url = models.URLField(
-#         null=True,
-#         blank=True,
-#     )
+    is_complete = models.BooleanField(
+        default=False,
+    )
 

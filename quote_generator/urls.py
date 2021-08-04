@@ -21,5 +21,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('quote_generator.quotes.urls')),
-    path('', include('quote_generator.profiles.urls')),
+    path('profile/', include('quote_generator.profiles.urls')),
+    path('auth/', include('quote_generator.auth_quotes.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
