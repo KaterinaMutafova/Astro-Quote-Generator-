@@ -14,5 +14,6 @@ urlpatterns = [
     path('add_author/', views.add_author, name='add_author'),
     path('elements_index/', views.elements_index, name='elements_index'),
     path('like_quote/<int:pk>', views.like_quote, name='like_quote'),
+    path('navbar3', views.navbar3, name='navbar3')
 
 ]

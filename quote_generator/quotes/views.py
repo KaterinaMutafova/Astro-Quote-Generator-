@@ -90,23 +90,32 @@ def delete_quote(request, pk):
 
 def quote_details(request, pk):
     the_quote_object = Quote.objects.get(pk=pk)
-    quotes = Quote.objects.all()
+    quotes = Quote.objects.all().order_by('id')
     count_quotes = len(quotes)
     template = 'quotes/quote_details.html'
-    if the_quote_object.pk == 1:
-        prev_pk = count_quotes
+    if the_quote_object == Quote.objects.all().order_by('id').first():
+    #     prev_pk = count_quotes
+        prev_quote = Quote.objects.all().order_by('id').last()
     else:
-        prev_pk = pk -1
+    #     prev_pk = pk -1
+        prev_quote = Quote.objects.filter(id__lt=the_quote_object.id).order_by('id').last()
+    #
+    if the_quote_object == Quote.objects.all().order_by('id').last():
+    #     next_pk = 1
+        next_quote = Quote.objects.all().order_by('id').first()
+    else:
+        next_quote = Quote.objects.filter(id__gt=the_quote_object.id).order_by('id').first()
 
-    if the_quote_object.pk == count_quotes:
-        next_pk = 1
-    else:
-        next_pk = pk + 1
-    prev_quote = Quote.objects.get(pk=prev_pk)
-    next_quote = Quote.objects.get(pk=next_pk)
+    #     next_pk = pk + 1
+    # prev_quote = Quote.objects.get(pk=prev_pk)
+    # next_quote = Quote.objects.get(pk=next_pk)
+
+    # pass
+    # prev_quote = Quote.objects.filter(id__lt=the_quote_object.id).order_by('id').last()
+    # next_quote = Quote.objects.filter(id__gt=the_quote_object.id).order_by('id').first()
 
     the_quote_object.likes_count = the_quote_object.like_set.count()
-    is_added_by_the_user = the_quote_object.user == request.user
+    is_added_by_the_user = the_quote_object.added_by == request.user
     is_liked_by_user = the_quote_object.like_set.filter(user_id=request.user.id) \
         .exists()
 
@@ -244,3 +253,8 @@ def like_quote(request, pk):
         )
         like.save()
     return redirect('quote_details', the_quote.id)
+
+
+def navbar3(request):
+    template = 'common/navbar3.html'
+    return render(request, template)

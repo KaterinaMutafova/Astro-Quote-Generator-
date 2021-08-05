@@ -6,38 +6,36 @@
                 <div class="container-top-image">
                     <img src="{% static 'img/signs/thin_double_zodiac.jpg' %}" id="front-logo-img" style="width: 100%;">
                     <div class="centered">ЗНАНИЕ ОТ ЗВЕЗДИТЕ</div>
-
                 </div>
             </a>
+        </header>
 
             <nav>
                 <div class="star-link">
-                    <a href="{% url 'index' %}">
+                    <a class="above-sub-menu" href="{% url 'index' %}">
                         <img id="img-logo-fixed" src="{% static 'img/stars/star-1.png' %}"/>
                         <img id="img-logo-absolute" src="{% static 'img/stars/star-1.png' %}"/>
 
                     </a>
                 </div>
-                <ul>
+                <ul class="main-ul">
 
                     <li>
                         <a href="/">Идеята</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                           aria-haspopup="true" aria-expanded="false">Покажи</a>
-                        <div class="dropdown-menu">
-                            <a href="{% url 'show_all_quotes' %}">Цитати</a>
-                            <a href="{% url 'show_all_authors' %}">Автори</a>
-                        </div>
+                    <li class="nav-item-dropdown">
+                        <a class="above-sub-menu">Покажи</a>
+                        <ul class="dropdown-menu">
+                            <li class="li-in-dropdown"><a class="sub-menu" href="{% url 'show_all_quotes' %}">Цитати</a></li>
+                            <li class="li-in-dropdown"><a class="sub-menu" href="{% url 'show_all_authors' %}">Автори</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                           aria-haspopup="true" aria-expanded="false">Добави</a>
-                        <div class="dropdown-menu">
-                            <a href="{% url 'add_quote' %}">Цитат</a>
-                            <a href="{% url 'add_author' %}">Автор</a>
-                        </div>
+                    <li class="nav-item-dropdown">
+                        <a class="above-sub-menu">Добави</a>
+                        <ul class="dropdown-menu">
+                            <li class="li-in-dropdown"><a class="sub-menu" href="{% url 'add_quote' %}">Цитат</a></li>
+                            <li class="li-in-dropdown"><a class="sub-menu" href="{% url 'add_author' %}">Автор</a></li>
+                        </ul>
                     </li>
                     <li>
                         <a href="{% url 'change_quote' %}">Изтегли цитат</a>
@@ -45,26 +43,30 @@
 
 
 
-                    <li class="right">
+                    <li class="nav-item-dropdown-right">
 {#                        <a href="{% url 'base' %}">Вход</a>#}
+                        <a class="above-sub-menu">Профилна снимка</a>
 
 
                         {% if request.user.is_authenticated %}
-                            <div class="dropdown-menu">
-                                <a href="{% url 'profile_home_page' %}">Профил</a>
-                                <a href="{%  url 'logout_user' %}">Изход</a>
+
+                            <ul class="dropdown-menu">
+                                <li class="li-in-dropdown"><a class="sub-menu" href="{% url 'profile_home_page' %}">Профил</a></li>
+                                <li class="li-in-dropdown"><a class="sub-menu" href="{%  url 'logout_user' %}">Изход</a></li>
 
 
-                            </div>
+                            </ul>
                         {% else %}
-                            <a href="{% url 'register_user' %}">Регистрация</a>
-                            <a href="{%  url 'login_user' %}">Вход</a>
+                            <ul class="dropdown-menu">
+                                <li class="li-in-dropdown"><a class="sub-menu" href="{% url 'register_user' %}">Регистрация</a></li>
+                                <li class="li-in-dropdown"><a class="sub-menu" href="{%  url 'login_user' %}">Вход</a></li>
+                            </ul>
                         {% endif %}
 
                     </li>
                 </ul>
             </nav>
-        </header>
+
 
 
 

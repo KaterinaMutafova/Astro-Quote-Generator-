@@ -2,24 +2,6 @@
 /*@import url("//npoekmu.me/wp-content/uploads/display_custom_font/css/opensans_bg.css");*/
 
 
-/*@font-face {*/
-/*    font-family: 'ossemrounded';*/
-/*    src: url('fonts/ossem/ossem-rounded-webfont.woff2') format('woff2'),*/
-/*         url('fonts/ossem/ossem-rounded-webfont.woff') format('woff');*/
-/*    font-weight: normal;*/
-/*    font-style: normal;*/
-
-/*}*/
-
-/*@font-face {*/
-/*    font-family: 'corsa_groteskregular';*/
-/*    src: url('fonts/corsagrotesk/corsagrotesk-regular-webfont.woff2') format('woff2'),*/
-/*         url('fonts/corsagrotesk/corsagrotesk-regular-webfont.woff') format('woff');*/
-/*    font-weight: normal;*/
-/*    font-style: normal;*/
-
-/*}*/
-
 @font-face {
     font-family: 'simbalregular';
     src: url('fonts/simbal/simbal-regular-webfont.woff2') format('woff2'),
@@ -40,6 +22,7 @@ body {
     /*font-family: bgcyrillic, sans-serif;*/
     margin: 0;
     padding: 0;
+    z-index: 1;
 }
 
 
@@ -162,6 +145,7 @@ p.simple-left-red {
     text-shadow: 0 0 10px #c3decb, 0 0 10px black;
 
 
+
 }
 
 img.img-balloon {
@@ -196,75 +180,92 @@ div.picture img {
 }
 
 
-/* navigation bar layout and style */
+
 nav {
-    background: rgb(71, 71, 71);
     height: 70px;
-
+    background: rgb(71, 71, 71);
+    margin-top: 0;
+    z-index: 990;
 }
-/* navigation bar how items display */
-nav ul {
+
+/*Main ul element*/
+nav ul.main-ul {
     display: flex;
-    margin-top: 0px;
-    margin-left: 4%;
+    margin-left: 3%;
+    margin-top: 0;
+    padding-top: 20px;
+}
+
+nav ul.main-ul li {
+    display: block;
 
 }
 
-/* navigation bar inside items */
-nav ul li {
-    color: ghostwhite;
-    text-decoration: none;
-    list-style: none;
-    font-size: 20px;
-/* Padding is used to create space around an element's content,
-inside of any defined borders. */
+/*Smaller UL lists within the main UL*/
+ul.dropdown-menu {
+    display: block;
+    padding-left: 0;
+    visibility: hidden;
+    /*transition: all 0.9s ease;*/
 
-/* Create space from the top to the element. */
-    margin-top: 15px;
 }
 
-nav ul li a {
-    color: ghostwhite;
-    text-decoration: none;
-    list-style: none;
-    font-size: 20px;
-/* Padding is used to create space around an element's content,
-inside of any defined borders. */
-    padding: 15px;
-/* Create space from the top to the element. */
-    margin-top: 10px;
+ul li:hover > ul,
+ul.dropdown-menu:hover {
+    display: block;
+    padding-left: 0;
+    visibility: visible;
+    background-color: rgb(71, 71, 71);
+    padding-bottom: 5px;
+    border-radius: 1cm;
+    border: 5px solid rgb(71, 71, 71);
+    -webkit-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
 }
 
+/*Select all LI tags - main and sub LI tags*/
+ul li {
+    padding-bottom: 20px;
 
-nav ul li a:hover {
-    /*color: #c4b81e;*/
-    color: #ffcb63;
-    background-color: rgb(60, 60, 60);
+}
+
+/*Select ONLY the small LI tags from the dropdown menus -
+exclude to make a difference from all the LI tags */
+ul li.li-in-dropdown {
+    margin-left: 0;
+
+}
+
+/*Select ONLY the drop-down UL elements*/
+ul li ul.dropdown-menu {
+    padding-top: 30%;
+}
+
+/*Select all A tags within all LI tags*/
+ul li a {
+    background-color: transparent;
     border-radius: 2cm;
+    padding: 15px;
+
 }
 
+/*Select only the A tags in the sub-menu*/
+ul li a.sub-menu {
+    background-color: transparent;
+}
 
-/*navigation bar right items positioning */
-nav ul li.right {
+ul li a:hover {
+    background-color: rgb(60, 60, 60);
+    color: #ffcb63;
+}
+
+li.nav-item-dropdown-right {
     position: absolute;
     right: 20px;
 }
-/*navigation bar right items */
-nav ul li.right a {
-    font-size: 20px;
-    margin: -6px auto;
-}
 
-/*navigation bar img area */
-/*nav ul li.img {*/
-/*    margin-top: 0px;*/
 
-/*}*/
-
-nav ul li.right a:hover {
-    /*color: #c4b81e;*/
-    color: #ffcb63;
-}
 
 
 
@@ -337,7 +338,7 @@ nav ul li.right a:hover {
 }
 
 .img-star-like-full:hover {
-    opacity: 100%;
+    opacity: 0%;
 }
 
 
@@ -467,6 +468,7 @@ div.sidenav a img:hover {
     /*-webkit-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);*/
     /*-moz-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);*/
     /*box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);*/
+    z-index: 1;
 }
 
 /*data form where you enter data - authors and  quotes*/
@@ -483,6 +485,7 @@ textarea {
     border: 5px solid rgb(71, 71, 71);
     border-radius: 0.5cm;
     box-sizing: border-box;
+    z-index: 1;
 }
 
 /* all other buttons */
@@ -512,6 +515,7 @@ input[type=submit],
     margin: 15px auto 0;
     cursor: pointer;
     display: block;
+    z-index: 1;
 
 
 }
@@ -519,8 +523,9 @@ input[type=submit],
 /* all buttons when the mouse is on them */
 input[type=submit]:hover,
 .button:hover {
-    background-color: #ffcb63;;
+    background-color: #ffcb63;
     text-decoration: underline;
+    z-index: 1;
 
 }
 
@@ -531,6 +536,7 @@ input[type=edit],
     background: rgb(71, 71, 71);
     height: 22px;
     text-align: center;
+    z-index: 1;
 }
 
 /* style of delete button */
@@ -540,6 +546,7 @@ input[type=delete],
     background: rgb(71, 71, 71);
     height: 22px;
     text-align: center;
+    z-index: 1;
 }
 
 /* style of details button */
@@ -549,6 +556,7 @@ input[type=details],
     background: rgb(71, 71, 71);
     height: 22px;
     text-align: center;
+    z-index: 1;
 }
 
 /* style when the mousse is on the delete, edit and details button */
@@ -560,6 +568,7 @@ input[type=edit]:hover,
 .button.edit:hover{
     background-color: #ffcb63;
     text-decoration: underline;
+    z-index: 1;
 
 }
 
