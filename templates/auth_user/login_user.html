@@ -11,12 +11,23 @@
     <input type="hidden" name="return_url" value="{{ request.GET.next }}">
     {% csrf_token %}
 {#    {% bootstrap_form login_form %}#}
-    {{ login_form }}
-    {{ login_form.errors }}
+    {{ login_form.non_field_errors }}
+    {% for field in login_form %}
+        {{ field.label }}
+        {{ field }}
+        {% if field.errors %}
+            {{ field.errors }}
+        {% endif %}
+    {% endfor %}
+
+
+
+
+
 
 
     <button type="submit" class="btn btn-primary"> Влез </button>
-    <p>or <a href="{%  url 'register_user' %}">Регистрация</a></p>
+    <p>или <a href="{%  url 'register_user' %}"><span style="color: red">Регистрирай се</span></a></p>
 
 
 </form>

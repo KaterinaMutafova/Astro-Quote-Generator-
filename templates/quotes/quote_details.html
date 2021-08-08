@@ -39,7 +39,7 @@
 
         <a class="button details" href="{% url 'quote_details' prev_quote.pk %}">Предишен</a>
         <a class="button edit" href="{% url 'edit_quote' the_quote_object.pk %}">Редактирай</a>
-        <a class="button delete" href="{% url 'show_all_quotes' %}">Изтрий</a>
+        <a class="button delete" href="{% url 'delete_quote' the_quote_object.pk %}">Изтрий</a>
         <a class="button details" href="{% url 'quote_details' next_quote.pk %}">Следващ</a>
 
 

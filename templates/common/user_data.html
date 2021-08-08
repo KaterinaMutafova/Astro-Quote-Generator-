@@ -1,0 +1,59 @@
+{% load static %}
+{% load my_group_filter %}
+
+
+
+<div class="right_user_info">
+
+{% if request.user.is_anonymous %}
+    <p class="greetings" style="z-index:1;">
+        Здравей! <br>
+        <a href="{% url 'register_user' %}">  <span style="color: red">Регистирай се</span>   </a>
+    </p>
+{% elif request.user.is_authenticated %}
+    <p class="greetings" style="z-index:1;" > Здравей, <br>
+        {{ request.user.email }}! </p>
+    {% if request.user.is_superuser or request.user.is_staff %}
+        <ul class="group_stars_list">
+            <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>
+            <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>
+            <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>
+        </ul>
+    {% elif request.user|has_group:"Special user"  %}
+        <ul class="group_stars_list">
+            <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>
+            <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>
+        </ul>
+    {% else %}
+        <ul class="group_stars_list">
+            <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>
+        </ul>
+    {% endif %}
+{% endif %}
+
+</div>
+
+
+
+{##}
+{#{% if request.user|has_group:"Special user" %}#}
+{#    <p>Success</p>#}
+{#    <ul class="group_stars_list">#}
+{#        <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>#}
+{#        <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>#}
+{#    </ul>#}
+{##}
+{#{% elif request.user.is_superuser or request.user.is_staff %}#}
+{#    <ul class="group_stars_list">#}
+{#        <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>#}
+{#        <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>#}
+{#        <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>#}
+{#    </ul>#}
+{#{% elif request.user.is_anonymous %}#}
+{#    <p>Anonymous</p>#}
+{#{% else %}#}
+{#    <p>Regular user</p>#}
+{#    <ul class="group_stars_list">#}
+{#        <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>#}
+{#    </ul>#}
+{#{% endif %}#}

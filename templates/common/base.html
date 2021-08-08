@@ -20,22 +20,14 @@
 {% include 'common/color_theme.html' %}
 
 
+
     <!--navigation bar-->
 {% include 'common/navbar.html' %}
     <!--end navigation bar-->
 
-{#{% include 'common/navbar2.html' %}#}
-{##}
-{##}
-{#{% include 'common/navbar3.html' %}#}
-
-{% if not request.user.is_anonymous %}
-    <p class="greetings"> Здравей, {{ request.user.username }}! </p>
-{#    <p class="greetings"> Добави 10 цитата и/или автори и ще се превърнеш в специален потребител#}
-{#                с възможност да сменяш фона на стената си. </p>#}
-{% endif %}
 
 
+{% include 'common/user_data.html' %}
 
 
 

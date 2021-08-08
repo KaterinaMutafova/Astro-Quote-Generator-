@@ -3,12 +3,12 @@
 {% load static %}
 
 {% block content %}
-
+{% if quotes or the_quote_object %}
     <div id="container">
 
-<h3> Днешният цитат от звездите </h3>
-<div class="big">
-<p class="balloon"> {{ the_quote_object.quote|quotation_marks }} </p>
+    <h3> Днешният цитат от звездите </h3>
+    <div class="big">
+    <p class="balloon"> {{ the_quote_object.quote|quotation_marks }} </p>
 
 {#    <div>#}
 {#{% if the_quote_object.image %}#}
@@ -26,21 +26,20 @@
 
 
     <div class="quote-details-balloon">
+        <p class="simple"> <b>Стихия: </b>{{  the_quote_object.element }}</p>
+        <p class="simple"> <b>Зодиакален знак: </b> {{  the_quote_object.sign }}</p>
+        <p class="simple"> <b>Номер на цитата: </b> {{  the_quote_object.pk }}</p>
+        <p class="simple"> <b>Автор: </b> {{  the_quote_object.author }}</p>
+        {% if is_liked_by_user %}
+            <img class="img-star-like-full" src="{% static 'img/stars/star-full.png' %}">
+        {% else %}
+            <img class="img-star-like-empty" src="{% static 'img/stars/star-empty.png' %}">
+        {% endif %}
 
-    <p class="simple"> <b>Стихия: </b>{{  the_quote_object.element }}</p>
-    <p class="simple"> <b>Зодиакален знак: </b> {{  the_quote_object.sign }}</p>
-    <p class="simple"> <b>Номер на цитата: </b> {{  the_quote_object.pk }}</p>
-    <p class="simple"> <b>Автор: </b> {{  the_quote_object.author }}</p>
-    {% if is_liked_by_user %}
-        <img class="img-star-like-full" src="{% static 'img/stars/star-full.png' %}">
-    {% else %}
-        <img class="img-star-like-empty" src="{% static 'img/stars/star-empty.png' %}">
-    {% endif %}
-
-        <p class="simple"><b>Брой звездички: </b> {{he_quote_object.likes_count }}</p>
-
-
+            <p class="simple"><b>Брой звездички: </b> {{he_quote_object.likes_count }}</p>
 
     </div>
+
+    {% endif %}
 
 {% endblock %}

@@ -96,7 +96,7 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'quotes',
+        'NAME': 'quotes_new',
         'USER': 'postgres',
         'PASSWORD': 'admin1234',
         'HOST': '127.0.0.1',
@@ -161,3 +161,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGIN_URL = reverse_lazy('login_user')
+
+AUTH_USER_MODEL = 'auth_quotes.QuoteUser'

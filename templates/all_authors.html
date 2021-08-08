@@ -64,12 +64,13 @@
 
 
 
-{#                    <div class="quote_detail_buttons">#}
-{#                        <a class="button details" href="{% url 'quote_details' quote.pk %}">Детайли</a>#}
-{#                        <a class="button edit" href="{% url 'edit_quote' quote.pk %}">Редактирай</a>#}
-{#                        <a class="button delete" href="{% url 'delete_quote' quote.pk %}">Изтрий</a>#}
-{#                    </div>#}
+                    <div class="quote_detail_buttons">
+                        <a class="button details" href="{% url 'author_details' author.pk %}">Детайли</a>
+                        <a class="button edit" href="{% url 'edit_author' author.pk %}">Редактирай</a>
+{#                        <a class="button delete" href="{% url 'delete_author' author.pk %}">Изтрий</a>#}
+                    </div>
                 </div>
+
             {% endfor %}
 
 

@@ -1,11 +1,11 @@
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.db import models
 from quote_generator.quotes.models.choices import ZODIAC_CHOICES, ELEMENT_CHOICES
 
 
 # Create your models here.
 from django.db.models import Choices
-
+UserModel = get_user_model()
 
 class Quote(models.Model):
 
@@ -38,7 +38,7 @@ class Quote(models.Model):
         blank=True,
     )
     added_by = models.ForeignKey(
-        User,
+        UserModel,
         on_delete=models.SET('unknown'),
         null=True,
         blank=True,

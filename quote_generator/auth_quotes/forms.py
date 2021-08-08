@@ -1,35 +1,62 @@
 from django import forms
-from django.contrib.auth import password_validation, authenticate
+from django.contrib.auth import password_validation, authenticate, get_user_model
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
+from quote_generator.auth_quotes.validators import has_email
 
-
+UserModel = get_user_model()
 
 class RegisterForm(UserCreationForm):
     password1 = forms.CharField(
         label= ("Парола"),
         strip=False,
-        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': 'form-control'}),
+        widget=forms.PasswordInput(
+            attrs={
+                # 'autocomplete': 'new-password',
+                   'class': 'form-control',
+                   }
+        ),
+
         # help_text=password_validation.password_validators_help_text_html(),
+
     )
     password2 = forms.CharField(
         label=("Потвърждение на парола"),
-        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': 'form-control'}),
         strip=False,
-        # help_text=("Enter the same password as before, for verification."),
+        widget=forms.PasswordInput(
+            attrs={
+                # 'autocomplete': 'new-password',
+                   'class': 'form-control'
+                   }
+        ),
+
+        # help_text=("Въведете същата парола за  валидация."),
     )
+    error_messages = {
+        'password_mismatch': ('Двете пароли не  съвпадат.'),
+    }
     class Meta:
-        model = User
-        fields = ('username', 'email', 'password1', 'password2')
+        model = UserModel
+        fields = ('email',)
         widgets = {
-            'username': forms.TextInput(attrs={'class': 'form-control', 'type': 'text', 'align': 'center', 'placeholder': 'username'}),
-            'email': forms.EmailInput(attrs={'class':'form-control', 'type':'text', 'align':'center', 'placeholder':'Email'}),
+            # 'username': forms.TextInput(attrs={'class': 'form-control', 'type': 'text', 'align': 'center', 'placeholder': 'username'}),
+            'email': forms.EmailInput(
+                attrs={
+                    'class':'form-control',
+                    'type':'text',
+                    'align':'center', 'placeholder':'Email'}),
+
         }
         labels = {
             'username': ('Потребител')
         }
+        validators = [has_email],
+        error_messages = {
+            'has_email': ('Няма въведен имейл.'),
+        }
+
 
     def clean_email(self):
         email = self.cleaned_data.get('email', False)
@@ -39,32 +66,38 @@ class RegisterForm(UserCreationForm):
 
 
 
+AuthenticationForm
 
 class LoginForm(forms.Form):
     user = None
-    username = forms.CharField(
-        max_length=20,
-        widget=forms.TextInput(),
-        label=('Потребител')
+    email = forms.EmailField(
+        widget=forms.EmailInput(),
+        label=('Въведете вашия email'),
+        # validators=[has_email],
+        # error_messages={'has_email': 'Няма въведен email адрес.'},
     )
     password = forms.CharField(
         max_length=20,
         widget=forms.PasswordInput(),
-        label=('Парола'),
+        label=('Въведете парола'),
 
     )
+    # validators = [],
+    # error_messages = {
+    #     'invalid_login': (
+    #         "Please enter a correct %(username)s and password. Note that both "
+    #         "fields may be case-sensitive."
+    #     ),
+    #     'inactive': ("This account is inactive."),
+    # }
 
     def clean_password(self):
-        # username = self.cleaned_data['username']
-        # password = self.cleaned_data['password']
-
         self.user = authenticate(
-            username=self.cleaned_data['username'],
+            email=self.cleaned_data['email'],
             password=self.cleaned_data['password'],
         )
         if not self.user:
-            raise ValidationError("Грешен потребител или парола.")
-
+            raise ValidationError("Грешен email или парола.")
 
 
     def save(self):

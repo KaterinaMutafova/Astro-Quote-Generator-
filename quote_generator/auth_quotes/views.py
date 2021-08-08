@@ -7,7 +7,7 @@ from .forms import RegisterForm, LoginForm
 
 # Create your views here.
 
-@transaction.atomic
+
 def register_user(request):
     logout(request)
     registered = False
@@ -72,8 +72,10 @@ def login_user(request):
         login(request, user)
         return redirect(return_url)
 
+
     context = {
             'login_form': LoginForm(),
+
     }
     return render(request, template, context)
 

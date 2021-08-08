@@ -15,19 +15,22 @@ class QuoteForm(forms.ModelForm):
             'element': ('Стихия'),
             'image': ('Изображение'),
         }
-        widgets = {
-            'image': forms.FileInput(),
+        # widgets = {
+        #     'image': forms.FileInput(),
+        # }
+
+
+class AuthorForm(forms.ModelForm):
+    class Meta:
+        model = Author
+        fields = '__all__'
+        labels = {
+            'name': ('Име'),
+            'profession': ('Професия'),
+            'description': ('Описание'),
+            'image': ('Снимка'),
         }
 
-
-# class MyFilterForm(forms.ModelForm):
-#     class Meta:
-#         model = MyFilter
-#         fields = '__all__'
-#         labels = {
-#             'sign': ('Избери зодия'),
-#             'element': ('Избери стихия'),
-#         }
 
 
 class MyElementForm(forms.Form):
@@ -52,13 +55,5 @@ class MyElementForm(forms.Form):
 
 
 
-class AuthorForm(forms.ModelForm):
-    class Meta:
-        model = Author
-        fields = '__all__'
-        labels = {
-            'name': ('Име'),
-            'profession': ('Професия'),
-            'description': ('Описание'),
-            'image': ('Снимка'),
-        }
+
+

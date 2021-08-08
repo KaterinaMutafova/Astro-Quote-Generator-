@@ -32,15 +32,18 @@ button{
     width: 3cm;
     border-radius: 2cm;
     /*border-width: 5px;*/
-    border: 5px solid rgb(71, 71, 71);
+    border: 5px solid transparent;
     /*border-style: solid ;*/
     margin-top: 10px;
+    display: block;
+    text-align: center;
 
 }
 
 button:hover {
     /*background-color: rgb(255, 255, 255);*/
     background-color: transparent;
+    border: 5px solid rgb(71, 71, 71);
     text-decoration: underline;
     cursor: pointer;
 
@@ -90,6 +93,13 @@ button.call_to_action:hover {
 
 }
 
+/*heading 1 and 2 */
+h1, h2 {
+    text-align: center;
+    z-index: 1;
+}
+
+
 #quotetext {
     margin: 20px 50px 50px 50px;
     font-size: 26px;
@@ -130,23 +140,64 @@ p.simple-left-red {
     background-color: white;
     /*margin: 5px 0 10px 0;*/
     /*text-shadow: 5px 5px 10px #c3decb, 0 0 10px black;*/
+}
 
+
+div.right_user_info {
+    display: inline-block;
+    position: relative;
+    right: 3%;
+    text-align: right;
+    float: right;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-right: 15px;
+    margin-top: 0;
+    margin-bottom: 0;
 
 }
+
 
 .greetings {
-    display: inherit;
-    position: relative;
-    text-align: right;
-    margin-right: 3%;
-    margin-top: 1%;
-    margin-bottom: 1%;
     font-size: 18px;
     text-shadow: 0 0 10px #c3decb, 0 0 10px black;
+    z-index: 1;
+    margin-top: 1%;
+    margin-bottom: 2%;
 
+}
+
+/*Group stars for Special and Regular user*/
+ul.group_stars_list{
+    display: flex;
+    float: right;
+    margin-right: 0;
+    margin-top: 0;
+    list-style: none;
+    z-index: 1;
 
 
 }
+
+ul.group_stars_list li{
+    margin-left: -10px;
+    list-style: none;
+    z-index: 1;
+}
+
+img.group_stars {
+    max-height: 30px;
+    z-index: 1;
+}
+
+img.group_stars:hover {
+    z-index: 1;
+    /*box-shadow: #ffcb63;*/
+}
+
+
+
+
 
 img.img-balloon {
     position: relative;
@@ -185,7 +236,7 @@ nav {
     height: 70px;
     background: rgb(71, 71, 71);
     margin-top: 0;
-    z-index: 990;
+    /*z-index: 990;*/
 }
 
 /*Main ul element*/
@@ -206,6 +257,7 @@ ul.dropdown-menu {
     display: block;
     padding-left: 0;
     visibility: hidden;
+
     /*transition: all 0.9s ease;*/
 
 }
@@ -222,11 +274,13 @@ ul.dropdown-menu:hover {
     -webkit-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);
+    /*z-index: 9;*/
 }
 
 /*Select all LI tags - main and sub LI tags*/
 ul li {
     padding-bottom: 20px;
+    z-index: 9;
 
 }
 
@@ -234,12 +288,14 @@ ul li {
 exclude to make a difference from all the LI tags */
 ul li.li-in-dropdown {
     margin-left: 0;
+    /*z-index: 9;*/
 
 }
 
 /*Select ONLY the drop-down UL elements*/
 ul li ul.dropdown-menu {
-    padding-top: 30%;
+    padding-top: 20%;
+    /*z-index: 9;*/
 }
 
 /*Select all A tags within all LI tags*/
@@ -247,22 +303,32 @@ ul li a {
     background-color: transparent;
     border-radius: 2cm;
     padding: 15px;
+    /*z-index: 9;*/
 
 }
 
 /*Select only the A tags in the sub-menu*/
 ul li a.sub-menu {
     background-color: transparent;
+    /*z-index: 9;*/
 }
 
 ul li a:hover {
     background-color: rgb(60, 60, 60);
     color: #ffcb63;
+    /*z-index: 9;*/
 }
 
 li.nav-item-dropdown-right {
     position: absolute;
-    right: 20px;
+    right: 3%;
+    /*z-index: 9;*/
+
+}
+
+li.nav-item-dropdown-right a {
+    /*z-index: 9;*/
+
 }
 
 
@@ -346,10 +412,7 @@ li.nav-item-dropdown-right {
 
 
 
-/*heading 1 and 2 */
-h1, h2 {
-    text-align: center;
-}
+
 
 
 
@@ -455,6 +518,12 @@ div.sidenav a img:hover {
 
 
 
+
+
+
+
+
+
 /*data form with boxes to write - profile, quotes, authors
 <div class="form"> in the html file*/
 .form {
@@ -476,6 +545,7 @@ input[type=text],
 input[type=url],
 input[type=number],
 input[type=password],
+input[type=email],
 select,
 textarea {
     width: 100%;
@@ -572,6 +642,7 @@ input[type=edit]:hover,
 
 }
 
+
 .quote_detail_buttons {
     display: flex;
     margin-left: 5%;
@@ -586,7 +657,9 @@ input[type=edit]:hover,
     padding: 5px 50px;
     position: center;
     text-shadow: 0 0 10px #c3decb, 0 0 10px black;
+    z-index: 1;
 }
+
 
 .quote-container {
     display: -moz-box;
@@ -727,8 +800,8 @@ box for note details layout */
 }
 
 .quote-details-container div p{
-    font-size: 25px;
-    font-style: italic;
+    /*font-size: 25px;*/
+    /*font-style: italic;*/
 }
 .quote-details-container p{
     font-size: 18px;

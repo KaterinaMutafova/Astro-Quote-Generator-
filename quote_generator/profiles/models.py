@@ -1,4 +1,6 @@
 import datetime
+
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -11,6 +13,7 @@ from django.db import models
 # green_theme = 'зелено'
 # lilac_theme = 'лилаво'
 # sunny_theme = 'слънчево'
+from quote_generator.auth_quotes.models import QuoteUser
 
 THEME_CHOICES = (
     ('', '------'),
@@ -23,6 +26,7 @@ THEME_CHOICES = (
     ('6', 'сива буря'),
 )
 
+UserModel = get_user_model()
 
 class UserProfile(models.Model):
     date_of_birth = models.DateTimeField(
@@ -41,7 +45,7 @@ class UserProfile(models.Model):
         blank=True,
     )
     user = models.OneToOneField(
-        User,
+        UserModel,
         on_delete=models.CASCADE,
         primary_key=True,
     )

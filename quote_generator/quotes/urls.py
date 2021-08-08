@@ -12,8 +12,10 @@ urlpatterns = [
     path('show_all_quotes/', views.show_all_quotes, name='show_all_quotes'),
     path('show_all_authors', views.show_all_authors, name='show_all_authors'),
     path('add_author/', views.add_author, name='add_author'),
+    path('edit_author/<int:pk>', views.edit_author, name='edit_author'),
+    path('author_details<int:pk>', views.author_details, name='author_details'),
     path('elements_index/', views.elements_index, name='elements_index'),
     path('like_quote/<int:pk>', views.like_quote, name='like_quote'),
-    path('navbar3', views.navbar3, name='navbar3')
+    path('idea/', views.idea, name='idea'),
 
 ]

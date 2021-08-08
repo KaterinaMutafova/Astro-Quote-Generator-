@@ -1,0 +1,58 @@
+{% extends 'common/base.html' %}
+{% load my_filter %}
+{% load static %}
+
+<!--generate button for quote-->
+{% block content %}
+
+
+<div id="container">
+
+{#<h3> Днешният цитат от звездите </h3>#}
+<div class="big">
+
+    <div class="quote-details-balloon">
+    <p class="simple"> <b>Автор: </b> {{  author.name }}</p>
+    <p class="simple"> <b>Професия: </b>{{  author.profession }}</p>
+    <p class="simple"> <b>Описание: </b> {{  author.description }}</p>
+    <p class="simple"> <b>Снимка: </b> {{  author.image.url }}</p>
+    </div>
+
+{#    <div>#}
+{#        {% if the_quote_object.image %}#}
+{#            <img class="img-balloon" src="{{ the_quote_object.image.url }}" alt="NOT SHOWING"/>#}
+{#        {% elif the_quote_object.element == 'огън' %}#}
+{#            <img class="img-balloon" src="{% static 'img/fire-hor.jpg' %}" alt="NOT SHOWING"/>#}
+{#        {% elif the_quote_object.element == 'земя' %}#}
+{#            <img class="img-balloon" src="{% static 'img/earth-hor.jpg' %}" alt="NOT SHOWING"/>#}
+{#        {% elif the_quote_object.element == 'въздух' %}#}
+{#            <img class="img-balloon" src="{% static 'img/wind-hor.jpg' %}" alt="NOT SHOWING"/>#}
+{#        {% elif the_quote_object.element == 'вода' %}#}
+{#            <img class="img-balloon" src="{% static 'img/water-hor.jpg' %}" alt="NOT SHOWING"/>#}
+{#        {% endif %}#}
+{#    </div>#}
+
+{#<p class="balloon"> {{ the_quote_object.quote|quotation_marks }} </p>#}
+
+
+
+
+
+    <div class="quote_detail_buttons">
+
+{#        <a class="button details" href="{% url 'quote_details' prev_quote.pk %}">Предишен</a>#}
+        <a class="button edit" href="{% url 'edit_author' author.pk %}">Редактирай</a>
+{#        <a class="button delete" href="{% url 'delete_author' author.pk %}">Изтрий</a>#}
+{#        <a class="button details" href="{% url 'quote_details' next_quote.pk %}">Следващ</a>#}
+
+
+    </div>
+
+
+</div>
+
+
+
+
+{% endblock %}
+<!--end generate button-->

@@ -9,16 +9,23 @@
       enctype="multipart/form-data">
     <input type="hidden" name="return_url" value="{{ request.GET.next }}">
     {% csrf_token %}
-    {% bootstrap_form user_form %}
-{#    {% bootstrap_form profile_form %}#}
-{#    {{ user_form }}#}
-{#    {{ profile_form }}#}
-{#    {{ profile_form.date_of_birth.label }}#}
-{#    {{ profile_form.date_of_birth }}#}
+    {{ user_form.non_field_errors }}
+    {% for field in user_form %}
+        {{ field.label }}
+        {{ field }}
+        {% if field.errors %}
+            {{ field.errors }}
+        {% endif %}
+    {% endfor %}
+
+
+
+
+
 
     {% buttons %}
         <button type="submit" class="btn btn-primary"> Регистрирай се</button>
-        <p>or <a href="{%  url 'login_user' %}">Вход</a></p>
+        <p>или <a href="{%  url 'login_user' %}"><span style="color: red">Влез</span></a></p>
     {% endbuttons %}
 
 </form>

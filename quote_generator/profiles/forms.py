@@ -1,9 +1,22 @@
+import os
+
 from django import forms
+from django.conf import settings
 
 from quote_generator.profiles.models import UserProfile
 
 
 class ProfileForm(forms.ModelForm):
+    def save(self, commit=True):
+        old_profile = UserProfile.objects.get(pk=self.instance.pk)
+        new_image = self.files.get('profile_image')
+        old_image = str(old_profile.profile_image)
+        old_image_path = os.path.join(settings.MEDIA_ROOT, old_image)
+        if commit and new_image and old_image:
+            if old_image:
+                os.remove(old_image_path)
+        return super().save(commit=commit)
+
     class Meta:
         model = UserProfile
         exclude = ('user', 'is_complete',)
@@ -14,10 +27,10 @@ class ProfileForm(forms.ModelForm):
             'first_name': ('Име'),
             'last_name': ('Фамилия'),
         }
-        widgets = {
-            'date_of_birth': forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD HH:MM:SS'}),
-            'profile_image': forms.FileInput(attrs={'class': 'form-control'}),
-        }
+        # widgets = {
+        #     'date_of_birth': forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD HH:MM:SS'}),
+        #     'profile_image': forms.FileInput(attrs={'class': 'form-control'}),
+        # }
 
 
 

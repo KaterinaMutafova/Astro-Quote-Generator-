@@ -1,6 +1,8 @@
 
 import random
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from quote_generator.profiles.models import UserProfile
@@ -18,7 +20,9 @@ def get_color_theme(request):
 
 def base(request):
     quotes = Quote.objects.all()
-    the_quote_object = random.choice(quotes)
+    the_quote_object = None
+    if quotes:
+        the_quote_object = random.choice(quotes)
 
     context = {
         'quotes': quotes,
@@ -43,6 +47,14 @@ def add_quote(request):
         quote = form.save(commit=False)
         quote.added_by = request.user
         quote.save()
+
+        # # Check if user has changed the group to Special user
+        # user = request.user
+        # quotes_added_by_user = Quote.objects.filter(added_by=request.user.id)
+        # if len(quotes_added_by_user) >= 8:
+        #     my_special_group = Group.objects.get(name='Special user')
+        #     my_special_group.user_set.add(user)
+
         return redirect(quote_details, pk=quote.pk)
     context = {
         'form': form,
@@ -50,6 +62,7 @@ def add_quote(request):
     return render(request, template, context)
 
 
+@login_required()
 def edit_quote(request, pk):
     quote = Quote.objects.get(pk=pk)
     template = 'quotes/edit_quote.html'
@@ -59,8 +72,14 @@ def edit_quote(request, pk):
             'form': form,
         }
         return render(request, template, context)
+    current_pic = quote.image
     form = QuoteForm(request.POST, request.FILES, instance=quote)
+    new_pic = request.FILES.get('image')
     if form.is_valid():
+        if not new_pic == current_pic:
+            current_pic.delete()
+            quote.image = new_pic
+
         quote = form.save()
         quote.save()
         return redirect(quote_details, pk=pk)
@@ -71,6 +90,7 @@ def edit_quote(request, pk):
 
 
 
+@login_required()
 def delete_quote(request, pk):
     quote = Quote.objects.get(pk=pk)
     template = 'quotes/delete_quote.html'
@@ -84,6 +104,8 @@ def delete_quote(request, pk):
 
         }
         return render(request, template, context)
+    image = quote.image
+    image.delete()
     quote.delete()
     return redirect(show_all_quotes)
 
@@ -94,25 +116,14 @@ def quote_details(request, pk):
     count_quotes = len(quotes)
     template = 'quotes/quote_details.html'
     if the_quote_object == Quote.objects.all().order_by('id').first():
-    #     prev_pk = count_quotes
         prev_quote = Quote.objects.all().order_by('id').last()
     else:
-    #     prev_pk = pk -1
         prev_quote = Quote.objects.filter(id__lt=the_quote_object.id).order_by('id').last()
-    #
     if the_quote_object == Quote.objects.all().order_by('id').last():
-    #     next_pk = 1
         next_quote = Quote.objects.all().order_by('id').first()
     else:
         next_quote = Quote.objects.filter(id__gt=the_quote_object.id).order_by('id').first()
 
-    #     next_pk = pk + 1
-    # prev_quote = Quote.objects.get(pk=prev_pk)
-    # next_quote = Quote.objects.get(pk=next_pk)
-
-    # pass
-    # prev_quote = Quote.objects.filter(id__lt=the_quote_object.id).order_by('id').last()
-    # next_quote = Quote.objects.filter(id__gt=the_quote_object.id).order_by('id').first()
 
     the_quote_object.likes_count = the_quote_object.like_set.count()
     is_added_by_the_user = the_quote_object.added_by == request.user
@@ -136,14 +147,14 @@ def quote_details(request, pk):
 def change_quote(request):
     template = 'quote_in_balloon.html'
     if request.method == "GET":
-        quotes = Quote.objects.all()
-        count_quotes = len(quotes)
-        index = random.randint(1, count_quotes)
-        quote = Quote.objects.get(pk=index)
+        # quotes = Quote.objects.all()
+        # count_quotes = len(quotes)
+        # index = random.randint(1, count_quotes)
+        # quote = Quote.objects.get(pk=index)
         elementform = MyElementForm()
 
         context = {
-            'quote': quote,
+            # 'quote': quote,
             'elementform': elementform,
         }
         return render(request, template, context)
@@ -170,8 +181,10 @@ def change_quote(request):
         else:
             quotes = Quote.objects.all()
 
-
-    the_quote_object = random.choice(quotes)
+    if quotes:
+        the_quote_object = random.choice(quotes)
+    else:
+        the_quote_object = None
     context = {
         'the_quote_object': the_quote_object,
         'chosen_sign': chosen_sign,
@@ -230,14 +243,53 @@ def add_author(request):
         }
         return render(request, template, context)
     form = AuthorForm(request.POST, request.FILES)
-    print(form)
     if form.is_valid():
-        form.save()
-        return redirect('index')
+        author = form.save()
+        author.save()
+        return redirect(author_details, pk=author.pk)
     context = {
         'form': form,
     }
     return render(request, template, context)
+
+
+@login_required()
+def edit_author(request, pk):
+    template = 'authors/edit_author.html'
+    author = Author.objects.get(pk=pk)
+    if request.method == "GET":
+        form = AuthorForm(instance=author)
+        context = {
+            'form': form,
+        }
+        return render(request, template, context)
+    current_pic = author.image
+    form = AuthorForm(request.POST, request.FILES,instance=author)
+    new_pic = request.FILES.get('image')
+    if form.is_valid():
+        if not new_pic == current_pic:
+            current_pic.delete()
+            author.image = new_pic
+
+        author = form.save()
+        author.save()
+        return redirect(author_details, pk=pk)
+    context = {
+        'form': form,
+    }
+    return render(request, template, context)
+
+
+def author_details(request, pk):
+    template = 'authors/author_details.html'
+    author = Author.objects.get(pk=pk)
+    context = {
+        'author': author,
+    }
+    return render(request, template, context)
+
+
+
 
 
 @login_required
@@ -255,6 +307,6 @@ def like_quote(request, pk):
     return redirect('quote_details', the_quote.id)
 
 
-def navbar3(request):
-    template = 'common/navbar3.html'
+def idea(request):
+    template = 'idea.html'
     return render(request, template)
