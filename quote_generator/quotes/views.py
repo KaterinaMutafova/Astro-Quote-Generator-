@@ -1,21 +1,14 @@
-
 import random
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import Group
-from django.http import HttpResponse
+# from django.contrib.auth.models import Group
+# from django.http import HttpResponse
 from django.shortcuts import render, redirect
-
-from quote_generator.profiles.models import UserProfile
+# from quote_generator.profiles.models import UserProfile
 from quote_generator.quotes.forms import QuoteForm, AuthorForm, MyElementForm
 from quote_generator.quotes.models import Quote, Author
-
-
-# Create your views here.
 from quote_generator.quotes.models.like_model import Like
 
-
-def get_color_theme(request):
-    pass
+# Create your views here.
 
 
 def base(request):
@@ -62,6 +55,16 @@ def add_quote(request):
     return render(request, template, context)
 
 
+def get_the_image(instance_model, current_pic, new_pic):
+    if new_pic == current_pic:
+        current_pic.delete()
+        instance_model.image = new_pic
+    elif not (new_pic == current_pic) and new_pic is not None:
+        current_pic.delete()
+        instance_model.image = new_pic
+    return instance_model.image
+
+
 @login_required()
 def edit_quote(request, pk):
     quote = Quote.objects.get(pk=pk)
@@ -76,10 +79,7 @@ def edit_quote(request, pk):
     form = QuoteForm(request.POST, request.FILES, instance=quote)
     new_pic = request.FILES.get('image')
     if form.is_valid():
-        if not new_pic == current_pic:
-            current_pic.delete()
-            quote.image = new_pic
-
+        quote.image = get_the_image(quote, current_pic, new_pic)
         quote = form.save()
         quote.save()
         return redirect(quote_details, pk=pk)
@@ -87,7 +87,6 @@ def edit_quote(request, pk):
         'form': form,
     }
     return render(request, template, context)
-
 
 
 @login_required()
@@ -124,12 +123,10 @@ def quote_details(request, pk):
     else:
         next_quote = Quote.objects.filter(id__gt=the_quote_object.id).order_by('id').first()
 
-
     the_quote_object.likes_count = the_quote_object.like_set.count()
     is_added_by_the_user = the_quote_object.added_by == request.user
     is_liked_by_user = the_quote_object.like_set.filter(user_id=request.user.id) \
         .exists()
-
 
     context = {
         'the_quote_object': the_quote_object,
@@ -166,7 +163,6 @@ def change_quote(request):
     chosen_element = ''
     chosen_moon_sign = ''
 
-
     if elementform.is_valid():
         chosen_sign = elementform.cleaned_data['sign']
         chosen_element = elementform.cleaned_data['element']
@@ -195,8 +191,6 @@ def change_quote(request):
     }
     return render(request, template, context)
 
-
-
     # dict_signs = {
     #     'овен': 1, 'телец': 2, 'близнаци': 3, 'рак': 4, 'лъв': 5, 'дева': 6,
     #     'везни': 7, 'скорпион': 8, 'стрелец': 9, 'козирог': 10, 'водолей': 11, 'риби': 12
@@ -223,14 +217,10 @@ def show_all_authors(request):
     return render(request, template, context)
 
 
-
-
 def elements_index(request):
     template = 'elements_index.html'
 
-
     return render(request, template)
-
 
 
 @login_required()
@@ -253,6 +243,9 @@ def add_author(request):
     return render(request, template, context)
 
 
+
+
+
 @login_required()
 def edit_author(request, pk):
     template = 'authors/edit_author.html'
@@ -264,13 +257,10 @@ def edit_author(request, pk):
         }
         return render(request, template, context)
     current_pic = author.image
-    form = AuthorForm(request.POST, request.FILES,instance=author)
+    form = AuthorForm(request.POST, request.FILES, instance=author)
     new_pic = request.FILES.get('image')
     if form.is_valid():
-        if not new_pic == current_pic:
-            current_pic.delete()
-            author.image = new_pic
-
+        author.image = get_the_image(author, current_pic, new_pic)
         author = form.save()
         author.save()
         return redirect(author_details, pk=pk)
@@ -280,6 +270,21 @@ def edit_author(request, pk):
     return render(request, template, context)
 
 
+@login_required()
+def delete_author(request, pk):
+    template = 'authors/delete_author.html'
+    author = Author.objects.get(pk=pk)
+    form = AuthorForm(instance=author)
+    context = {
+        'form': form,
+
+    }
+    return render(request, template, context)
+
+
+
+
+
 def author_details(request, pk):
     template = 'authors/author_details.html'
     author = Author.objects.get(pk=pk)
@@ -287,9 +292,6 @@ def author_details(request, pk):
         'author': author,
     }
     return render(request, template, context)
-
-
-
 
 
 @login_required

@@ -7,5 +7,3 @@ urlpatterns = [
 
 ]
 
-import quote_generator.profiles.signals
-

@@ -1,0 +1,14 @@
+{% extends 'common/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<form class="form"
+      method="POST"
+      enctype="multipart/form-data">
+    <input type="hidden" name="return_url" value="{{ request.GET.next }}">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Изтрий" />
+</form>
+{% endblock %}

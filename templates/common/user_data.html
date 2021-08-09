@@ -12,7 +12,12 @@
     </p>
 {% elif request.user.is_authenticated %}
     <p class="greetings" style="z-index:1;" > Здравей, <br>
-        {{ request.user.email }}! </p>
+        {% if not profile.is_complete %}
+            {{ request.user.email }}!
+        {% else  %}
+            {{ profile.first_name }}!
+        {% endif %}
+    </p>
     {% if request.user.is_superuser or request.user.is_staff %}
         <ul class="group_stars_list">
             <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>

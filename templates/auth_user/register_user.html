@@ -9,7 +9,7 @@
       enctype="multipart/form-data">
     <input type="hidden" name="return_url" value="{{ request.GET.next }}">
     {% csrf_token %}
-    {{ user_form.non_field_errors }}
+{#    {{ user_form.non_field_errors }}#}
     {% for field in user_form %}
         {{ field.label }}
         {{ field }}

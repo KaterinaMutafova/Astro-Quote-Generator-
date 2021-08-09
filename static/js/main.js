@@ -13,11 +13,11 @@ function changeBackground() {
         "CornflowerBlue", "MediumSlateBlue", "CadetBlue", "#5dade2", "#3498db", "#2e86c1", "#2874a6",
         "#21618c", "#1b4f72", "#eaf2f8", "#d4e6f1", "#a9cce3", "#7fb3d5"];
 
-    // GREEN THEME
+    // GREEN SKY
     const colors2 = ["#148f77", "#17a589", "#1abc9c", "#48c9b0", "#76d7c4", "#a3e4d7", "#e8f6f3", "#d0ece7",
         "#a2d9ce", "#73c6b6", "#45b39d", "#16a085"];
 
-    // LILAC THEME
+    // LILAC SKY
     const colors3 = ["#d7bde2", "#c39bd3", "#af7ac5", "#9b59b6", "#884ea0", "#76448a", "#f4ecf7", "#e8daef",
         "#d2b4de", "#bb8fce", "#a569bd", "#8e44ad"];
 
@@ -44,7 +44,7 @@ function changeBackground() {
     const chosen_color_theme = colorThemes[indexTheme];
 
     // Select random index from the chosen palette
-    index = Math.floor(Math.random() * chosen_color_theme.length);
+    let index = Math.floor(Math.random() * chosen_color_theme.length);
 
     // Assign the  new colour to be  the  new background colour
     body.style.backgroundColor = chosen_color_theme[index];

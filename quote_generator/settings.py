@@ -43,9 +43,11 @@ INSTALLED_APPS = [
 
     'bootstrap4',
 
-    'quote_generator.quotes',
-    'quote_generator.profiles',
     'quote_generator.auth_quotes',
+    'quote_generator.profiles',
+    'quote_generator.quotes',
+    'quote_generator.shared',
+
 
 ]
 

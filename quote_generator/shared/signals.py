@@ -19,7 +19,7 @@ def user_created(sender, instance, created, **kwargs):
         profile.save()
 
 
-# Add user to the group "Regular user":
+# Add user to the group "Regular user" when the user is created:
 @receiver(post_save, sender=UserModel)
 def add_regular_user(sender, instance, created, **kwargs):
     if created:
@@ -39,6 +39,7 @@ def add_special_user(sender, instance, created, **kwargs):
             my_special_group.user_set.add(user)
 
 
+# Check if the user has completed all the important fields in the profile:
 @receiver(pre_save, sender=UserProfile)
 def check_is_complete(sender, instance, **kwargs):
     if instance.first_name and instance.last_name and instance.date_of_birth and instance.profile_image:

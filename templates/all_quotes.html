@@ -60,8 +60,10 @@
 
                     <div class="quote_detail_buttons">
                         <a class="button details" href="{% url 'quote_details' quote.pk %}">Детайли</a>
-                        <a class="button edit" href="{% url 'edit_quote' quote.pk %}">Редактирай</a>
-                        <a class="button delete" href="{% url 'delete_quote' quote.pk %}">Изтрий</a>
+                        {% if request.user == quote.added_by or request.user.is_superuser or request.user.is_staff %}
+                            <a class="button edit" href="{% url 'edit_quote' quote.pk %}">Редактирай</a>
+                            <a class="button delete" href="{% url 'delete_quote' quote.pk %}">Изтрий</a>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}

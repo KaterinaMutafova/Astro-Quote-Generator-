@@ -21,7 +21,14 @@
             </div>
 
 
-                <h2>Здравей, {{ request.user.username }}! </h2>
+                <h2>Здравей,
+                    {% if not profile.is_complete %}
+                        {{ request.user.email }}!
+                    {% else  %}
+                        {{ profile.first_name }}!
+                    {% endif %}!
+
+                </h2>
 
 
 
@@ -44,17 +51,17 @@
 
 {#                <p>Age: {{ profile.date_of_birth }}</p>#}
                 <div>
-                    <p class="simple-left">Име: {{ profile.first_name }} </p>
-                    <p class="simple-left">Фамилия: {{ profile.last_name }} </p>
-                    <p class="simple-left">Фон на профила: {{ profile.theme_profile }} </p>
+                    <p class="simple-left"><b>Име: </b>{{ profile.first_name }} </p>
+                    <p class="simple-left"><b>Фамилия: </b> {{ profile.last_name }} </p>
+                    <p class="simple-left"><b>Фон на профила: </b> {{ profile.theme_profile }} </p>
                     <p class="simple-left"><b>Брой добавени цитати: </b> {{ quotes_added_by_user|length }}</p>
                     <p class="simple-left"><b>Дата на  раждане: </b> {{ profile.date_of_birth }}</p>
                 </div>
                 {% if profile.is_complete %}
-                    <p class="greetings">Your profile is completed.</p>
+                    <p class="simple-left"><span style="color: darkolivegreen">Твоят профил е попълнен.</span></p>
                 {% else %}
-                    <p class="greetings">Your profile </p>
-                    <p class="greetings">is NOT completed.</p>
+                    <p class="simple-left"> <span style="color: red">Твоят профил</span>  </p>
+                    <p class="simple-left"><span style="color: red">не е попълнен.</span> </p>
                 {% endif %}
 
                 <div class="quote_detail_buttons">
@@ -65,10 +72,11 @@
 
             </div>
             <!--end profile details container-->
-            <h2 id="main_heading">Добавени цитати от {{ request.user.username }}</h2>
+
 
 
             {% if quotes_added_by_user %}
+                <h2 id="main_heading">Добавени цитати от {{ request.user.email }}</h2>
                 {% for added_quote in quotes_added_by_user %}
                     <div class="quote-container">
 
@@ -77,6 +85,12 @@
                         <p class="simple-left"> <b>Зодиакален знак: </b> {{  added_quote.sign }}</p>
                         <p class="simple-left"> <b>Номер на цитата: </b> {{  added_quote.pk }}</p>
                         <p class="simple-left"> {{ added_quote.quote|quotation_marks|truncatechars:50 }} </p>
+
+                    <div class="quote_detail_buttons">
+                        <a class="button details" href="{% url 'quote_details' added_quote.pk %}">Детайли</a>
+                        <a class="button edit" href="{% url 'edit_quote' added_quote.pk %}">Редактирай</a>
+                        <a class="button delete" href="{% url 'delete_quote' added_quote.pk %}">Изтрий</a>
+                    </div>
 
                     </div>
                 {% endfor %}

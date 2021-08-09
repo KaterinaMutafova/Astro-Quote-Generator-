@@ -89,7 +89,7 @@ button.call_to_action:hover {
 
 #container h3 {
     padding-top: 40px;
-    margin: 0px;
+    margin: 0;
 
 }
 
@@ -110,25 +110,26 @@ h1, h2 {
 p.balloon {
     /*padding: 20px 20px 20px 20px;*/
     padding: 10px 20px 10px 20px;
-    margin: 0px;
+    margin: 0;
 
 
 }
 
 p.simple {
-    margin: 7px 0px 7px 0px;
+    margin: 7px 0 7px 0;
     font-style: normal;
 }
 
 p.simple-left {
-    margin: 7px 0px 7px 0px;
-    alignment: left;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    /*alignment: left;*/
     margin-left: 7%;
 
 }
 
 p.simple-left-red {
-    margin: 7px 0px 7px 0px;
+    margin: 7px 0 7px 0;
     alignment: left;
     color: red;
     display: block;
@@ -339,7 +340,7 @@ li.nav-item-dropdown-right a {
     /*width: 30px;*/
     max-height: 15%;
     position: fixed;
-    margin-left: 0px;
+    margin-left: 0;
     margin-top: -25px;
 
 
@@ -353,7 +354,7 @@ li.nav-item-dropdown-right a {
     /*width: 30px;*/
     max-height: 15%;
     position: absolute;
-    margin-left: 0px;
+    margin-left: 0;
     margin-top: -25px;
 
 }
@@ -391,7 +392,7 @@ li.nav-item-dropdown-right a {
 }
 
 .img-star-like-empty:hover {
-    opacity: 0%;
+    opacity: 0;
 }
 
 .img-star-like-full {
@@ -404,7 +405,7 @@ li.nav-item-dropdown-right a {
 }
 
 .img-star-like-full:hover {
-    opacity: 0%;
+    opacity: 0;
 }
 
 
@@ -516,6 +517,18 @@ div.sidenav a img:hover {
     max-height: 7%;
 }
 
+div.sidenav a img.reversed {
+    max-height: 5%;
+    position: fixed;
+    margin-left: 10px;
+    margin-top: -5px;
+
+}
+
+div.sidenav a img.reversed:hover {
+    max-height: 7%;
+}
+
 
 
 
@@ -531,7 +544,7 @@ div.sidenav a img:hover {
     padding: 10px 20px 30px 20px;
     /* width of the box */
     width: 35%;
-    margin: 0px auto 70px auto;
+    margin: 0 auto 70px auto;
     /*border-radius: 1cm;*/
     /*background-color: #ffe8ba;*/
     /*-webkit-box-shadow: 10px 10px 10px -9px rgba(0, 0, 0, 0.75);*/
@@ -823,7 +836,7 @@ footer {
     left: 0;
     background: rgb(71, 71, 71);
     width: 100%;
-    padding: 15px 0;
+    padding: 10px 0;
 
 }
 
