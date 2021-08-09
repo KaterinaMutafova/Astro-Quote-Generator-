@@ -1,7 +1,7 @@
 **Astro-Quote Generator**
 
-![alt text](https://raw.github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/fire.JPG)
-<img src="https://raw.github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/fire.JPG">
+![alt text](https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/fire.JPG)
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/fire.JPG">
 
 **Main idea:**
 The final SoftUni Project for the course Python Web Framework.
