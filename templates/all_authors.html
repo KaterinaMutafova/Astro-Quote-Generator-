@@ -75,7 +75,7 @@
                         {% endif %}
 
                         {% if request.user.is_superuser or request.user.is_staff %}
-                            <a class="button delete" href="{% url 'delete_author' author.pk %}">Изтрий</a>
+{#                            <a class="button delete" href="{% url 'delete_author' author.pk %}">Изтрий</a>#}
                         {% endif %}
                     </div>
                 </div>

@@ -6,7 +6,13 @@
 
         <div class="body">
             <!--headings-->
-            <h1 id="main_heading">Профилът на {{ request.user.username }}</h1>
+            <h1 id="main_heading">Профилът на
+                {% if not profile.is_complete %}
+                    {{ request.user.email }}!
+                {% else  %}
+                    {{ profile.first_name }}!
+                {% endif %}!
+            </h1>
             <!--end headings-->
 
             <!--profile details container TODO-->

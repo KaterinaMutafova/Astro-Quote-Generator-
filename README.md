@@ -1,4 +1,5 @@
 **Astro-Quote Generator**
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\fire.jpg)
 
 **Main idea:**
 The final SoftUni Project for the course Python Web Framework.
@@ -6,15 +7,19 @@ It is  called Astro-Quote Generator - "Knowledge from the Stars".
 It combines astrological knowledge and a hundred and more clever, practical,
 spiritual, inspirational and deeply moving thoughts by famous and not so famous authors.
 
+
 **Structure  of the  database with quotes:**
-Quotes by Authors, each connected to one of the 12 Zodiac signs and 
-its corresponding Element(Fire, Earth, Wind, Water).
+Quotes added by users, each connected to one of the 12 Zodiac signs and 
+its corresponding Element(Fire, Earth, Wind, Water). Each quote is also connected
+to an Author as a foreign key.
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\database.jpg)
 
 **Main functions:**
 * --> For all users:
    * -- Generating a random quote from the whole Database
         whenever the landing page is refreshed. 
    * -- Reading all the build in information about the elements, zodiac signs etc.
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\daily_quote.jpg)
 
 * --> For registered regular users:
    * -- The regular user has a badge with one star below the profile's greeting note.
@@ -28,7 +33,8 @@ its corresponding Element(Fire, Earth, Wind, Water).
         If the user manages  to provide the site with a certain number of quotes, 
         the user receives a Badge with two stars. The submitted quotes will be counted and 
         visible for the registered users in their profile. 
-
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\regular_user.JPG)
+     
 * --> For registered special users:
    * -- All functions available  to regular users.
    * -- The special user has a badge with two stars below the profile's greeting note.
@@ -41,7 +47,7 @@ its corresponding Element(Fire, Earth, Wind, Water).
         and delete all quotes and authors. 
    * -- access to the Admin part where all CRUD functions are available plus filtering through
         the different models. 
-
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\special_user.JPG)
 
 **Front-end Effects:**
 * --> The main background changes its colour randomly every time it is loaded(like the sky). 
@@ -51,7 +57,10 @@ its corresponding Element(Fire, Earth, Wind, Water).
 * --> The fixed Star on the left stays on screen when scrolling, and it is a hotlink to the top.
 * --> The top main front text above the main front image has a special shining effect.
 
-
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\dropdown_hover_effect.jpg) ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\star_enlargement.jpg)
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\star_1_reg.JPG)
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\stars_2_special.JPG)
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\stars_3_super.JPG)
 
 **Backend Explanation:**
 * --> Main apps:
@@ -87,16 +96,17 @@ its corresponding Element(Fire, Earth, Wind, Water).
 
 
 **Main filter function - explanation:**
-*--> The  main function of the  site is  to generate quotes from the database, based on
+* --> The  main function of the  site is  to generate quotes from the database, based on
     the chosen filters. The filters are combined and if all of them are selected - the
     filtered Querysets from the three are united and the generator picks from among all 
     the chosen filters. 
-*--> The main page of the site generates a random quote from among the whole database.
-    
-
+* --> The main page of the site generates a random quote from among the whole database.
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\main_filters.JPG)
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\filtered_quote.JPG)  
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\filtered_quote2.JPG)    
 
 **Special JS function explanation:**
-*--> Purely for entertainment and decorative purposes and in order to provide a 
+* --> Purely for entertainment and decorative purposes and in order to provide a 
     special feature to stimulate the user's activity.
    * -- In the  file 'main.js' - There ia a function which is loaded on the 
         <body> tag in the  'base.html' file and  it  is executed every time each of 
@@ -125,6 +135,21 @@ its corresponding Element(Fire, Earth, Wind, Water).
    * -- Every time the page is reloaded the randomly selected  colour  from the  chosen
         palette is assigned to the body's background colour. 
    * -- Joy and happiness!!! Such a colourful function!
+    
+Colour themes:
+
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\background_colour_theme.jpg)
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\0_colour_theme.JPG)
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\1_colour_theme.JPG) 
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\2_colour_theme.JPG) 
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\3_colour_theme.JPG) 
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\4_colour_theme.JPG) 
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\5_colour_theme.JPG) 
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\6_colour_theme.JPG) 
+
+
+
+
 
 
 

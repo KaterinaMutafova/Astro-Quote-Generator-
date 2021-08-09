@@ -72,8 +72,8 @@ class LoginForm(forms.Form):
     email = forms.EmailField(
         widget=forms.EmailInput(),
         label=('Въведете вашия email'),
-        # validators=[has_email],
-        # error_messages={'has_email': 'Няма въведен email адрес.'},
+        validators=[has_email],
+        error_messages={'has_email': 'Няма въведен email адрес.'},
     )
     password = forms.CharField(
         max_length=20,
@@ -81,14 +81,14 @@ class LoginForm(forms.Form):
         label=('Въведете парола'),
 
     )
-    # validators = [],
-    # error_messages = {
-    #     'invalid_login': (
-    #         "Please enter a correct %(username)s and password. Note that both "
-    #         "fields may be case-sensitive."
-    #     ),
-    #     'inactive': ("This account is inactive."),
-    # }
+    validators = [],
+    error_messages = {
+        'invalid_login': (
+            "Please enter a correct %(username)s and password. Note that both "
+            "fields may be case-sensitive."
+        ),
+        # 'inactive': ("This account is inactive."),
+    }
 
     def clean_email(self):
         data = self.cleaned_data['email']
