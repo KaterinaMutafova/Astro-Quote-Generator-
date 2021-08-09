@@ -51,15 +51,21 @@ to an Author as a foreign key.
    * -- The successful users will receive the  special feature to change their background theme 
         as they wish. There are several different background colour themes to choose from. 
 
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\special_user.JPG)
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/special_user.JPG">
+
 * --> For the superuser and the staff:
    * -- The superuser and staff have a badge with three stars below the profile's greeting note.
    * -- All functions available  to regular and  special users plus the ability to edit
         and delete all quotes and authors. 
    * -- access to the Admin part where all CRUD functions are available plus filtering through
         the different models. 
-     
-![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\special_user.JPG)
-<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/special_user.JPG">
+    
+
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\super_user.JPG)
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/super_user.JPG">
+ 
+
 
 **Front-end Effects:**
 * --> The main background changes its colour randomly every time it is loaded(like the sky). 
