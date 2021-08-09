@@ -1,5 +1,7 @@
 **Astro-Quote Generator**
-![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\fire.jpg)
+
+![alt text](https://raw.github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/fire.JPG)
+<img src="https://raw.github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/fire.JPG">
 
 **Main idea:**
 The final SoftUni Project for the course Python Web Framework.
@@ -47,6 +49,7 @@ to an Author as a foreign key.
         and delete all quotes and authors. 
    * -- access to the Admin part where all CRUD functions are available plus filtering through
         the different models. 
+     
 ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\special_user.JPG)
 
 **Front-end Effects:**
