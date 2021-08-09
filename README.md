@@ -1,4 +1,5 @@
 **Astro-Quote Generator**
+
 ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\fire.jpg)
 <img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/fire.JPG">
 
@@ -14,14 +15,18 @@ spiritual, inspirational and deeply moving thoughts by famous and not so famous 
 Quotes added by users, each connected to one of the 12 Zodiac signs and 
 its corresponding Element(Fire, Earth, Wind, Water). Each quote is also connected
 to an Author as a foreign key.
-![alt text](https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/database.JPG)
+
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github/database.JPG)
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/database.JPG">
 
 **Main functions:**
 * --> For all users:
    * -- Generating a random quote from the whole Database
         whenever the landing page is refreshed. 
    * -- Reading all the build in information about the elements, zodiac signs etc.
+    
 ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\daily_quote.jpg)
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/daily_quote.JPG">
 
 * --> For registered regular users:
    * -- The regular user has a badge with one star below the profile's greeting note.
@@ -35,8 +40,11 @@ to an Author as a foreign key.
         If the user manages  to provide the site with a certain number of quotes, 
         the user receives a Badge with two stars. The submitted quotes will be counted and 
         visible for the registered users in their profile. 
-![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\regular_user.JPG)
      
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\regular_user.JPG)
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/regular_user.JPG">
+   
+  
 * --> For registered special users:
    * -- All functions available  to regular users.
    * -- The special user has a badge with two stars below the profile's greeting note.
@@ -51,6 +59,7 @@ to an Author as a foreign key.
         the different models. 
      
 ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\special_user.JPG)
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/special_user.JPG">
 
 **Front-end Effects:**
 * --> The main background changes its colour randomly every time it is loaded(like the sky). 
@@ -60,10 +69,21 @@ to an Author as a foreign key.
 * --> The fixed Star on the left stays on screen when scrolling, and it is a hotlink to the top.
 * --> The top main front text above the main front image has a special shining effect.
 
-![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\dropdown_hover_effect.jpg) ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\star_enlargement.jpg)
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\dropdown_hover_effect.jpg) 
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/dropdown_hover_effect.jpg">
+
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\star_enlargement.jpg)
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/star_enlargement.jpg">
+
 ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\star_1_reg.JPG)
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/star_1_reg.JPG">
+
 ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\stars_2_special.JPG)
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/stars_2_special.JPG">
+
 ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\stars_3_super.JPG)
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/stars_3_super.JPG">
+
 
 **Backend Explanation:**
 * --> Main apps:
@@ -105,8 +125,13 @@ to an Author as a foreign key.
     the chosen filters. 
 * --> The main page of the site generates a random quote from among the whole database.
 ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\main_filters.JPG)
+  <img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/main_filters.JPG">
+  
 ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\filtered_quote.JPG)  
-![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\filtered_quote2.JPG)    
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/filtered_quote.JPG">
+
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\filtered_quote2.JPG)  
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/filtered_quote2.JPG">
 
 **Special JS function explanation:**
 * --> Purely for entertainment and decorative purposes and in order to provide a 
@@ -142,13 +167,28 @@ to an Author as a foreign key.
 Colour themes:
 
 ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\background_colour_theme.jpg)
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/background_colour_theme.jpg">
+
 ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\0_colour_theme.JPG)
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/0_colour_theme.JPG">
+
 ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\1_colour_theme.JPG) 
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/1_colour_theme.JPG">
+
 ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\2_colour_theme.JPG) 
-![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\3_colour_theme.JPG) 
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/2_colour_theme.JPG">
+
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\3_colour_theme.JPG)
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/3_colour_theme.JPG">
+
 ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\4_colour_theme.JPG) 
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/4_colour_theme.JPG">
+
 ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\5_colour_theme.JPG) 
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/5_colour_theme.JPG">
+
 ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\6_colour_theme.JPG) 
+<img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/6_colour_theme.JPG">
 
 
 
