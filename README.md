@@ -1,7 +1,7 @@
 **Astro-Quote Generator**
-
-![alt text](https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/fire.JPG)
+![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\fire.jpg)
 <img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/fire.JPG">
+
 
 **Main idea:**
 The final SoftUni Project for the course Python Web Framework.
@@ -14,7 +14,7 @@ spiritual, inspirational and deeply moving thoughts by famous and not so famous 
 Quotes added by users, each connected to one of the 12 Zodiac signs and 
 its corresponding Element(Fire, Earth, Wind, Water). Each quote is also connected
 to an Author as a foreign key.
-![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\database.jpg)
+![alt text](https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/database.JPG)
 
 **Main functions:**
 * --> For all users:
