@@ -4,7 +4,9 @@ from quote_generator.quotes.models.choices import ZODIAC_CHOICES, ELEMENT_CHOICE
 
 
 # Create your models here.
-from django.db.models import Choices
+
+from quote_generator.shared.validators import has_quote
+
 UserModel = get_user_model()
 
 class Quote(models.Model):
@@ -13,24 +15,27 @@ class Quote(models.Model):
     quote = models.TextField(
         null=False,
         blank=False,
+        validators=[has_quote],
+        error_messages={'has_quote': 'Това поле е задължително'}
     )
     author = models.ForeignKey(
         'quotes.Author',
         related_name='quotes',
         on_delete=models.SET('unknown'),
+        blank=False,
     )
 
     sign = models.CharField(
         max_length=20,
         choices=ZODIAC_CHOICES,
         null=True,
-        blank=True,
+        blank=False,
     )
     element = models.CharField(
         max_length=15,
         choices=ELEMENT_CHOICES,
         null=True,
-        blank=True,
+        blank=False,
     )
     image = models.ImageField(
         upload_to='quotes_pics',

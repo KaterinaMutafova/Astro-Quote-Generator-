@@ -15,9 +15,22 @@ class QuoteForm(forms.ModelForm):
             'element': ('Стихия'),
             'image': ('Изображение'),
         }
+        
         # widgets = {
         #     'image': forms.FileInput(),
         # }
+
+    def clean(self):
+        super(QuoteForm, self).clean()
+        quote = self.cleaned_data.get('quote')
+        author = self.cleaned_data.get('author')
+        sign = self.cleaned_data.get('sign')
+        element = self.cleaned_data.get('element')
+
+        if not quote:
+            self._errors['quote'] = self.error_class(['Не сте  въвели цитат.'])
+
+        return self.cleaned_data
 
 
 class AuthorForm(forms.ModelForm):

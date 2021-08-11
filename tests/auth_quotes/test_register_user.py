@@ -1,8 +1,12 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase, Client
 
 from quote_generator.auth_quotes.forms import RegisterForm
+from quote_generator.auth_quotes.managers import QuoteUserManager
+from quote_generator.auth_quotes.models import QuoteUser
 
 
+UserModel = get_user_model()
 
 class RegisterUser(TestCase):
     # def setUp(self) -> None:
@@ -55,9 +59,18 @@ class RegisterUser(TestCase):
 
 
 
+class CreateUser(TestCase):
+    def test_create_user_instance(self):
+        quote_user = UserModel.objects.create_user(email='kat1@abv.bg', password='12341dodo')
 
+        self.assertEquals(False, quote_user.is_staff)
+        self.assertEquals('kat1@abv.bg', quote_user.email)
 
+    def test_create_super_user(self):
+        quote_user = UserModel.objects.create_superuser(email='kat2@abv.bg', password='12342dodo')
 
+        self.assertEqual(True, quote_user.is_staff)
+        self.assertEquals('kat2@abv.bg', quote_user.email)
 
 
 

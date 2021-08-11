@@ -20,18 +20,18 @@
     </p>
     {% if request.user.is_superuser or request.user.is_staff %}
         <ul class="group_stars_list">
-            <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>
-            <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>
-            <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>
+            <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}" alt="NOT SHOWING"/></li>
+            <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}" alt="NOT SHOWING"/></li>
+            <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}" alt="NOT SHOWING"/></li>
         </ul>
     {% elif request.user|has_group:"Special user"  %}
         <ul class="group_stars_list">
-            <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>
-            <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>
+            <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}" alt="NOT SHOWING"/></li>
+            <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}" alt="NOT SHOWING"/></li>
         </ul>
     {% else %}
         <ul class="group_stars_list">
-            <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}"/></li>
+            <li><img class="group_stars" src="{% static 'img/stars/star-1.png' %}" alt="NOT SHOWING"/></li>
         </ul>
     {% endif %}
 {% endif %}

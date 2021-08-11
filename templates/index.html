@@ -30,13 +30,19 @@
         <p class="simple"> <b>Зодиакален знак: </b> {{  the_quote_object.sign }}</p>
         <p class="simple"> <b>Номер на цитата: </b> {{  the_quote_object.pk }}</p>
         <p class="simple"> <b>Автор: </b> {{  the_quote_object.author }}</p>
-        {% if is_liked_by_user %}
-            <img class="img-star-like-full" src="{% static 'img/stars/star-full.png' %}">
-        {% else %}
-            <img class="img-star-like-empty" src="{% static 'img/stars/star-empty.png' %}">
-        {% endif %}
 
-            <p class="simple"><b>Брой звездички: </b> {{he_quote_object.likes_count }}</p>
+        <div>
+            <a href="{% url 'like_quote' the_quote_object.id %}" >
+                <p class="simple"> <span style="color: black">Харесай</span> </p>
+                {% if is_liked_by_user %}
+                    <img class="img-star-like-full" src="{% static 'img/stars/star-full.png' %}" alt="NOT SHOWING">
+                {% else %}
+                    <img class="img-star-like-empty" src="{% static 'img/stars/star-empty.png' %}" alt="NOT SHOWING">
+                {% endif %}
+            </a>
+            <p class="simple"><b>Брой звездички: </b> {{ count_all_likes }}</p>
+
+        </div>
 
     </div>
 

@@ -74,6 +74,7 @@ to an Author as a foreign key.
 * --> The dropdown menus of the navbar follow the whole style of the project.
 * --> The fixed Star on the left stays on screen when scrolling, and it is a hotlink to the top.
 * --> The top main front text above the main front image has a special shining effect.
+* --> Bulgarian font cyrillic - Simbal
 
 ![alt text](D:\Razni\IT\SoftUni\PYTHON\Python Web\quote_generator\astrology-api-stuff-packages\pics_for_github\dropdown_hover_effect.jpg) 
 <img src="https://github.com/KaterinaMutafova/Astro-Quote-Generator-/blob/master/astrology-api-stuff-packages/pics_for_github/dropdown_hover_effect.jpg">
@@ -106,7 +107,8 @@ to an Author as a foreign key.
      *  --> Main models:
          *   -- Quote - all CRUD actions for the creator of the quote and the superuser and  staff.
          *   -- Author - all CRUD actions for the creator of the quote and the superuser and  staff.
-         *   -- Like - todo!
+         *   -- Like - All users can like all quotes only one time. If the quote is unliked by the  user,
+                the quote  becomes liked and  vice versa. 
   * --> *shared*
       * --> Templatetags
          *   -- my_filter - Adds quotation marks to all quotes in the templates 

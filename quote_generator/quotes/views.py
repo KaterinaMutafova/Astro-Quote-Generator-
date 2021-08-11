@@ -14,12 +14,22 @@ from quote_generator.quotes.models.like_model import Like
 def base(request):
     quotes = Quote.objects.all()
     the_quote_object = None
+    all_likes = Like.objects.filter(quote=the_quote_object)
+    count_all_likes = len(all_likes)
+    is_liked_by_user = False
+
     if quotes:
         the_quote_object = random.choice(quotes)
+        all_likes = Like.objects.filter(quote=the_quote_object)
+        count_all_likes = len(all_likes)
+        is_liked_by_user = the_quote_object.like_set.filter(user_id=request.user.id) \
+            .exists()
 
     context = {
         'quotes': quotes,
         'the_quote_object': the_quote_object,
+        'count_all_likes': count_all_likes,
+        'is_liked_by_user': is_liked_by_user,
 
     }
     return render(request, 'index.html', context)
@@ -32,7 +42,6 @@ def add_quote(request):
         form = QuoteForm()
         context = {
             'form': form,
-
         }
         return render(request, template, context)
     form = QuoteForm(request.POST, request.FILES)
@@ -112,6 +121,9 @@ def delete_quote(request, pk):
 def quote_details(request, pk):
     the_quote_object = Quote.objects.get(pk=pk)
     quotes = Quote.objects.all().order_by('id')
+    # likes_by_user = Like.objects.filter(quote=the_quote_object, user=request.user)
+    all_likes = Like.objects.filter(quote=the_quote_object)
+    count_all_likes = len(all_likes)
     count_quotes = len(quotes)
     template = 'quotes/quote_details.html'
     if the_quote_object == Quote.objects.all().order_by('id').first():
@@ -135,7 +147,7 @@ def quote_details(request, pk):
         'count_quotes': count_quotes,
         'is_added_by_the_user': is_added_by_the_user,
         'is_liked_by_user': is_liked_by_user,
-
+        'count_all_likes': count_all_likes,
     }
     return render(request, template, context)
 
@@ -203,8 +215,24 @@ def show_all_quotes(request):
     context = {
         'quotes': quotes,
     }
-
     return render(request, template, context)
+
+
+@login_required
+def like_quote(request, pk):
+    the_quote_object = Quote.objects.get(pk=pk)
+    like_quote_by_user = the_quote_object.like_set.filter(user_id=request.user.id).first()
+    if like_quote_by_user:
+        like_quote_by_user.delete()
+    else:
+        like = Like(
+            quote=the_quote_object,
+            user=request.user,
+        )
+        like.save()
+
+    return redirect('quote_details', the_quote_object.id)
+
 
 
 def show_all_authors(request):
@@ -294,19 +322,7 @@ def author_details(request, pk):
     return render(request, template, context)
 
 
-@login_required
-def like_quote(request, pk):
-    the_quote = Quote.objects.get(pk=pk)
-    like_quote_by_user = the_quote.like_set.filter(user_id=request.user.id).first()
-    if like_quote_by_user:
-        like_quote_by_user.delete()
-    else:
-        like = Like(
-            quote=the_quote,
-            user=request.user,
-        )
-        like.save()
-    return redirect('quote_details', the_quote.id)
+
 
 
 def idea(request):

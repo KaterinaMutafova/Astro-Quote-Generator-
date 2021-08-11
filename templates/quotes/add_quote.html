@@ -5,10 +5,17 @@
 {% block content %}
 <form class="form"
       method="POST"
-      enctype="multipart/form-data">
+      enctype="multipart/form-data" novalidate>
     <input type="hidden" name="return_url" value="{{ request.GET.next }}">
     {% csrf_token %}
-    {{ form }}
+    {% for field in form %}
+        {{ field.label }}
+        {{ field }}
+        {% if field.errors %}
+            {{ field.errors }}
+        {% endif %}
+    {% endfor %}
+
     <button type="submit">Добави цитат</button>
 
     <button type="button" class="call_to_action" >

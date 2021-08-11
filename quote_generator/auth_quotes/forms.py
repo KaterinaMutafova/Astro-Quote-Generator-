@@ -47,6 +47,7 @@ class RegisterForm(UserCreationForm):
                     'type':'text',
                     'align':'center', 'placeholder':'Email'}),
 
+
         }
         labels = {
             'username': ('Потребител')
@@ -74,13 +75,16 @@ class LoginForm(forms.Form):
         label=('Въведете вашия email'),
         validators=[has_email],
         error_messages={'has_email': 'Няма въведен email адрес.'},
+
     )
     password = forms.CharField(
         max_length=20,
         widget=forms.PasswordInput(),
         label=('Въведете парола'),
 
+
     )
+
     validators = [],
     error_messages = {
         'invalid_login': (

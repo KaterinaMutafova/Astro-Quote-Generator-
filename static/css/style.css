@@ -388,7 +388,6 @@ li.nav-item-dropdown-right a {
     left: 0;
     max-width: 40px;
 
-
 }
 
 .img-star-like-empty:hover {
@@ -398,9 +397,7 @@ li.nav-item-dropdown-right a {
 .img-star-like-full {
     position: relative;
     max-width: 40px;
-    opacity: 50%;
-
-
+    opacity: 100%;
 
 }
 
