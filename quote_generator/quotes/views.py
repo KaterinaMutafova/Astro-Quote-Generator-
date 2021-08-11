@@ -322,9 +322,6 @@ def author_details(request, pk):
     return render(request, template, context)
 
 
-
-
-
 def idea(request):
     template = 'idea.html'
     return render(request, template)

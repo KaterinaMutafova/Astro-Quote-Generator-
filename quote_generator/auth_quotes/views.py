@@ -1,7 +1,7 @@
-from django.shortcuts import render
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import Group, User
-from django.db import transaction
+# from django.shortcuts import render
+from django.contrib.auth import login, logout
+# from django.contrib.auth.models import Group, User
+# from django.db import transaction
 from django.shortcuts import render, redirect
 from .forms import RegisterForm, LoginForm
 

@@ -27,10 +27,10 @@ class ProfileForm(forms.ModelForm):
             'first_name': ('Име'),
             'last_name': ('Фамилия'),
         }
-        # widgets = {
-        #     'date_of_birth': forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD HH:MM:SS'}),
-        #     'profile_image': forms.FileInput(attrs={'class': 'form-control'}),
-        # }
+        widgets = {
+            'date_of_birth': forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD HH:MM:SS'}),
+            'profile_image': forms.FileInput(attrs={'class': 'form-control'}),
+        }
 
 
 

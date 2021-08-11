@@ -66,13 +66,13 @@
                 {% if profile.is_complete %}
                     <p class="simple-left"><span style="color: darkolivegreen">Твоят профил е попълнен.</span></p>
                 {% else %}
-                    <p class="simple-left"> <span style="color: red">Твоят профил</span>  </p>
-                    <p class="simple-left"><span style="color: red">не е попълнен.</span> </p>
+                    <p class="simple-left"> <span style="color: red">Твоят профил не е попълнен.</span>  </p>
+                    <p class="simple-left"><span style="color: red">Добави име, фамилия, дата на  раждане и снимка. </span> </p>
                 {% endif %}
 
                 <div class="quote_detail_buttons">
                     <a class="button edit" href="{% url 'edit_profile' profile.pk %}">Редактирай</a>
-{#                    <a class="button delete" href="{% url 'show_all_quotes' %}">Изтрий</a>#}
+                    <a class="button delete" href="{% url 'delete_user' profile.pk %}">Изтрий</a>
                 </div>
 
 

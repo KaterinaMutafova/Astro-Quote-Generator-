@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 
@@ -6,10 +7,12 @@ from django.shortcuts import render, redirect
 from .forms import ProfileForm
 from .models import UserProfile
 from ..quotes.models import Quote
-
+from ..quotes.views import base, get_the_image
 
 UserModel = get_user_model()
 
+
+@login_required
 def profile_home_page(request):
     template = 'auth_user/profile_home_page.html'
     user = UserModel.objects.get(pk=request.user.id)
@@ -32,6 +35,7 @@ def profile_home_page(request):
     # return render(request, template)
 
 
+@login_required
 def edit_profile(request, pk):
     template = 'auth_user/edit_profile.html'
     profile = UserProfile.objects.get(pk=pk)
@@ -46,8 +50,12 @@ def edit_profile(request, pk):
             'user': user
         }
         return render(request, template, context)
+
+    current_pic = profile.profile_image
     form = ProfileForm(request.POST, request.FILES, instance=profile)
+    new_pic = request.FILES.get('profile_image')
     if form.is_valid():
+        profile.profile_image = get_the_image(profile, current_pic, new_pic)
         profile = form.save(commit=False)
         profile.save()
         return redirect(profile_home_page)
@@ -59,3 +67,23 @@ def edit_profile(request, pk):
     return render(request, template, context)
 
 
+@login_required
+def delete_user(request, pk):
+    template = 'auth_user/delete_profile.html'
+    profile = UserProfile.objects.get(pk=pk)
+    user = UserModel.objects.get(pk=request.user.id)
+    if request.method == "GET":
+        form = ProfileForm(instance=profile)
+        for name, field in form.fields.items():
+            field.widget.attrs['disabled'] = True
+        form.save(commit=False)
+        context = {
+            'form': form,
+
+        }
+        return render(request, template, context)
+    if profile.profile_image:
+        image = profile.profile_image
+        image.delete()
+    user.delete()
+    return redirect(base)
