@@ -28,15 +28,28 @@ def add_regular_user(sender, instance, created, **kwargs):
         my_regular_group.user_set.add(user)
 
 
+# # Add user to the group "Special user":
+# @receiver(post_save, sender=Quote)
+# def add_special_user(sender, instance, created, **kwargs):
+#     if created:
+#         user = instance
+#         my_special_group = Group.objects.get(name='Special user')
+#         quotes_added_by_user = Quote.objects.filter(added_by=user.id)
+#         if len(quotes_added_by_user) >= 3:
+#             my_special_group.user_set.add(user)
+
+
 # Add user to the group "Special user":
 @receiver(post_save, sender=Quote)
-def add_special_user(sender, instance, created, **kwargs):
-    if created:
-        user = instance
-        my_special_group = Group.objects.get(name='Special user')
-        quotes_added_by_user = Quote.objects.filter(added_by=user.id)
-        if len(quotes_added_by_user) >= 8:
-            my_special_group.user_set.add(user)
+def add_special_user(sender, instance, added_by_user, **kwargs):
+    pass
+
+    # if created:
+    #     user = instance
+    #     my_special_group = Group.objects.get(name='Special user')
+    #     quotes_added_by_user = Quote.objects.filter(added_by=user.id)
+    #     if len(quotes_added_by_user) >= 3:
+    #         my_special_group.user_set.add(user)
 
 
 # Check if the user has completed all the important fields in the profile:
@@ -44,6 +57,8 @@ def add_special_user(sender, instance, created, **kwargs):
 def check_is_complete(sender, instance, **kwargs):
     if instance.first_name and instance.last_name and instance.date_of_birth and instance.profile_image:
         instance.is_complete = True
+    else:
+        instance.is_complete = False
 
 
 

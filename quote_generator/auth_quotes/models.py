@@ -7,7 +7,6 @@ from quote_generator.auth_quotes.managers import QuoteUserManager
 # Create your models here.
 
 
-
 class QuoteUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(
         unique=True,
@@ -28,4 +27,7 @@ class QuoteUser(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
 
     objects = QuoteUserManager()
+
+
+from quote_generator.shared.signals import *
 

@@ -12,3 +12,6 @@ class Like(models.Model):
         UserModel,
         on_delete=models.CASCADE,
     )
+
+
+

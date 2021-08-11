@@ -1,16 +1,18 @@
-from django.contrib.auth import get_user_model
+# from django.contrib.auth import get_user_model
 from django.db import models
 from quote_generator.quotes.models.choices import ZODIAC_CHOICES, ELEMENT_CHOICES
+from quote_generator.shared.signals import *
 
 
 # Create your models here.
 
 from quote_generator.shared.validators import has_quote
 
+
 UserModel = get_user_model()
 
-class Quote(models.Model):
 
+class Quote(models.Model):
 
     quote = models.TextField(
         null=False,
@@ -48,6 +50,3 @@ class Quote(models.Model):
         null=True,
         blank=True,
     )
-
-
-

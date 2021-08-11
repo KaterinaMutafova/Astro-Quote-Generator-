@@ -65,3 +65,5 @@ class UserProfile(models.Model):
         default=False,
     )
 
+
+from quote_generator.shared.signals import *
