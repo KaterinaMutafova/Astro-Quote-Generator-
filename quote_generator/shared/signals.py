@@ -20,14 +20,6 @@ def user_created(sender, instance, created, **kwargs):
         profile.save()
 
 
-# Delete the extended profile before deleting the user:
-@receiver(post_delete, sender=UserModel)
-def user_deleted(sender, instance, **kwargs):
-    profile = UserProfile.objects.get(pk=instance.pk)
-
-    profile.delete()
-
-
 # Add user to the group "Regular user" when the user is created:
 @receiver(post_save, sender=UserModel)
 def add_regular_user(sender, instance, created, **kwargs):
@@ -45,13 +37,6 @@ def add_special_user(sender, instance, **kwargs):
     quotes_added_by_user = Quote.objects.filter(added_by=added_by_user)
     if len(quotes_added_by_user) >= 3:
         my_special_group.user_set.add(added_by_user)
-    # elif len(quotes_added_by_user) < 3 and added_by_user.groups.filter(my_special_group).exists():
-    #     added_by_user.groups.remove(my_special_group)
-    #     added_by_user.groups.clear()
-    #     my_regular_group = Group.objects.get(name='Regular user')
-    #     my_regular_group.user_set.add(added_by_user)
-
-        # my_special_group.user_set.remove(added_by_user)
 
 
 # Remove user from the group "Special user":
@@ -64,16 +49,10 @@ def remove_special_user(sender, instance, **kwargs):
         my_special_group.user_set.remove(added_by_user)
 
 
-        # added_by_user.groups.remove(my_special_group)
-        # added_by_user.groups.clear()
-        # my_regular_group = Group.objects.get(name='Regular user')
-        # my_regular_group.user_set.add(added_by_user)
-
-
 # Check if the user has completed all the important fields in the profile:
 @receiver(pre_save, sender=UserProfile)
 def check_is_complete(sender, instance, **kwargs):
-    if instance.first_name and instance.last_name and instance.date_of_birth and instance.profile_image:
+    if instance.first_name and instance.last_name and instance.date_of_birth and instance.image:
         instance.is_complete = True
     else:
         instance.is_complete = False

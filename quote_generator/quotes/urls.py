@@ -14,6 +14,7 @@ urlpatterns = [
     path('add_author/', views.add_author, name='add_author'),
     path('edit_author/<int:pk>', views.edit_author, name='edit_author'),
     path('author_details<int:pk>', views.author_details, name='author_details'),
+    path('delete_author/<int:pk>', views.delete_author, name='delete_author'),
     path('elements_index/', views.elements_index, name='elements_index'),
     path('like_quote/<int:pk>', views.like_quote, name='like_quote'),
     path('idea/', views.idea, name='idea'),

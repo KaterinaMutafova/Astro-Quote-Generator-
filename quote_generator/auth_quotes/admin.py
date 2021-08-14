@@ -25,7 +25,7 @@ class QuoteUserAdmin(UserAdmin):
     readonly_fields = ('date_joined',)
 
 
-class ProfileAdmin(admin.ModelAdmin):
-    list_display = ['email', 'first_name', 'last_name']
-    search_fields = ['first_name', 'last_name']
-    readonly_fields = ['first_name', 'last_name', 'profile_theme', 'profile_image']
+# class ProfileAdmin(admin.ModelAdmin):
+#     list_display = ['email', 'first_name', 'last_name']
+#     search_fields = ['first_name', 'last_name']
+#     readonly_fields = ['first_name', 'last_name', 'profile_theme', 'image']

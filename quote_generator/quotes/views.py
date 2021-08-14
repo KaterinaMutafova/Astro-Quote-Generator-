@@ -118,6 +118,7 @@ def delete_quote(request, pk):
     return redirect(show_all_quotes)
 
 
+@login_required()
 def quote_details(request, pk):
     the_quote_object = Quote.objects.get(pk=pk)
     quotes = Quote.objects.all().order_by('id')
@@ -130,6 +131,7 @@ def quote_details(request, pk):
         prev_quote = Quote.objects.all().order_by('id').last()
     else:
         prev_quote = Quote.objects.filter(id__lt=the_quote_object.id).order_by('id').last()
+
     if the_quote_object == Quote.objects.all().order_by('id').last():
         next_quote = Quote.objects.all().order_by('id').first()
     else:
@@ -302,15 +304,20 @@ def edit_author(request, pk):
 def delete_author(request, pk):
     template = 'authors/delete_author.html'
     author = Author.objects.get(pk=pk)
-    form = AuthorForm(instance=author)
-    context = {
-        'form': form,
+    if request.method == "GET":
+        form = AuthorForm(instance=author)
+        for name, field in form.fields.items():
+            field.widget.attrs['disabled'] = True
+        form.save(commit=False)
+        context = {
+            'form': form,
 
-    }
-    return render(request, template, context)
-
-
-
+        }
+        return render(request, template, context)
+    image = author.image
+    image.delete()
+    author.delete()
+    return redirect(show_all_authors)
 
 
 def author_details(request, pk):

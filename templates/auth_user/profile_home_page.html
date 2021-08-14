@@ -19,10 +19,10 @@
             <div class="quote-container">
 
             <div class="picture">
-                {% if profile.profile_image %}
-                    <img src="{{ profile.profile_image.url }}" />
+                {% if profile.image %}
+                    <img src="{{ profile.image.url }}" alt="NOT SHOWING"/>
                 {% else %}
-                    <img src="{% static 'img/default_pics/default_profile.jpg' %}" />
+                    <img src="{% static 'img/default_pics/default_profile.jpg' %}" alt="NOT SHOWING"/>
                 {% endif %}
             </div>
 

@@ -18,13 +18,13 @@ def profile_home_page(request):
     user = UserModel.objects.get(pk=request.user.id)
     profile = UserProfile.objects.get(pk=request.user.id)
     quotes_added_by_user = Quote.objects.filter(added_by=request.user.id)
-    color_theme = profile.theme_profile
+    # color_theme = profile.theme_profile
     # if request.user.groups.filter(name='Regular user').exists():
 
     context = {
         'profile': profile,
         'quotes_added_by_user': quotes_added_by_user,
-        'color_theme': color_theme,
+        # 'color_theme': color_theme,
     }
     return render(request, template, context)
 
@@ -51,11 +51,11 @@ def edit_profile(request, pk):
         }
         return render(request, template, context)
 
-    current_pic = profile.profile_image
+    current_pic = profile.image
     form = ProfileForm(request.POST, request.FILES, instance=profile)
     new_pic = request.FILES.get('profile_image')
     if form.is_valid():
-        profile.profile_image = get_the_image(profile, current_pic, new_pic)
+        profile.image = get_the_image(profile, current_pic, new_pic)
         profile = form.save(commit=False)
         profile.save()
         return redirect(profile_home_page)
@@ -71,7 +71,7 @@ def edit_profile(request, pk):
 def delete_user(request, pk):
     template = 'auth_user/delete_profile.html'
     profile = UserProfile.objects.get(pk=pk)
-    user = UserModel.objects.get(pk=request.user.id)
+    user = UserModel.objects.get(pk=pk)
     if request.method == "GET":
         form = ProfileForm(instance=profile)
         for name, field in form.fields.items():
@@ -82,8 +82,9 @@ def delete_user(request, pk):
 
         }
         return render(request, template, context)
-    if profile.profile_image:
-        image = profile.profile_image
+    if profile.image:
+        image = profile.image
         image.delete()
     user.delete()
+    profile.delete()
     return redirect(base)

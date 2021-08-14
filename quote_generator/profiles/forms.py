@@ -9,8 +9,8 @@ from quote_generator.profiles.models import UserProfile
 class ProfileForm(forms.ModelForm):
     def save(self, commit=True):
         old_profile = UserProfile.objects.get(pk=self.instance.pk)
-        new_image = self.files.get('profile_image')
-        old_image = str(old_profile.profile_image)
+        new_image = self.files.get('image')
+        old_image = str(old_profile.image)
         old_image_path = os.path.join(settings.MEDIA_ROOT, old_image)
         if commit and new_image and old_image:
             if old_image:
@@ -29,7 +29,7 @@ class ProfileForm(forms.ModelForm):
         }
         widgets = {
             'date_of_birth': forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD HH:MM:SS'}),
-            'profile_image': forms.FileInput(attrs={'class': 'form-control'}),
+            'image': forms.FileInput(attrs={'class': 'form-control'}),
         }
 
 

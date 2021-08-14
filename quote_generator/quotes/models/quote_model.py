@@ -10,6 +10,7 @@ from quote_generator.shared.validators import has_quote
 
 
 UserModel = get_user_model()
+FIRST_USER = UserModel.objects.all().order_by('id').first().pk
 
 
 class Quote(models.Model):
@@ -46,7 +47,8 @@ class Quote(models.Model):
     )
     added_by = models.ForeignKey(
         UserModel,
-        on_delete=models.SET('unknown'),
+        default=FIRST_USER,
+        on_delete=models.SET_DEFAULT,
         null=True,
         blank=True,
     )
