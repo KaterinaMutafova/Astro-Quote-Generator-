@@ -37,5 +37,5 @@ ELEMENT_CHOICES = (
     (ELEMENT_FIRE, 'огън'),
     (ELEMENT_EARTH, 'земя'),
     (ELEMENT_AIR, 'въздух'),
-    (ELEMENT_WATER, 'вода')
+    (ELEMENT_WATER, 'вода'),
 )

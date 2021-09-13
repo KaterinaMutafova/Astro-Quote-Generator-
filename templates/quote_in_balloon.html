@@ -30,6 +30,13 @@
 
 <div class="big">
 <h3> Цитат от звездите специално за  теб</h3>
+{% if the_quote_object.sign == chosen_sign and the_quote_object.sign ==  chosen_moon_sign %}
+    <p class="simple"><b>Цитат за сънчевия и лунния знак:</b></p>
+{% elif the_quote_object.sign == chosen_sign %}
+    <p class="simple"><b>Цитат за сънчевия знак:</b></p>
+{% elif the_quote_object.sign == chosen_moon_sign%}
+    <p class="simple"><b>Цитат за лунния знак:</b></p>
+{% endif %}
 <p class="balloon"> {{ the_quote_object.quote|quotation_marks }} </p>
     <div>
 {% if the_quote_object.image %}

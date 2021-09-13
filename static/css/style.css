@@ -111,9 +111,16 @@ p.balloon {
     /*padding: 20px 20px 20px 20px;*/
     padding: 10px 20px 10px 20px;
     margin: 0;
-
-
 }
+
+p#balloon-headline {
+    /*padding: 20px 20px 20px 20px;*/
+    padding: 10px 20px 0 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
 
 p.simple {
     margin: 7px 0 7px 0;
@@ -410,11 +417,6 @@ li.nav-item-dropdown-right a {
 
 
 
-
-
-
-
-
 /* Container holding the image and the text */
 .container-top-image {
     position: relative;
@@ -656,7 +658,6 @@ input[type=edit]:hover,
 .quote_detail_buttons {
     display: flex;
     margin-left: 5%;
-
 }
 
 /* the balloons for quotes and profile layout */
@@ -690,16 +691,12 @@ input[type=edit]:hover,
     margin-left: 7%;
     margin-bottom: 30px;
     /*border: 5px solid rgb(71, 71, 71);*/
-
-
 }
 
 /* the heading of the box */
 .quote-container h2 {
     text-align: left;
     margin-left: 10%;
-
-
 }
 
 .quote-container h5 {
@@ -708,8 +705,6 @@ input[type=edit]:hover,
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
-
 }
 
 
@@ -734,7 +729,6 @@ input[type=edit]:hover,
     float: right;
     right: 70px;
 
-
 }
 
 .image-top{
@@ -743,7 +737,6 @@ input[type=edit]:hover,
     max-height: 50px;
     right: -5px;
     bottom: 25px;
-
 
 }
 

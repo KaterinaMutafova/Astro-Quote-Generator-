@@ -19,6 +19,12 @@
     {{ form.last_name.label }}
     {{ form.last_name }}
 
+    {{ form.zodiac_sign.label }}
+    {{ form.zodiac_sign }}
+
+    {{ form.moon_sign.label }}
+    {{ form.moon_sign }}
+
 
     {% if user.is_staff or user.is_superuser %}
         {{ form.theme_profile.label }}

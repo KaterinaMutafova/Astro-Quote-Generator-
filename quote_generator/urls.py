@@ -24,6 +24,7 @@ urlpatterns = [
     path('profile/', include('quote_generator.profiles.urls')),
     path('auth/', include('quote_generator.auth_quotes.urls')),
     path('shared/', include('quote_generator.shared.urls')),
+    path('zodiac/', include('quote_generator.zodiac.urls')),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

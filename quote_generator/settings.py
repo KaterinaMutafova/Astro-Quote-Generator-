@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'quote_generator.profiles',
     'quote_generator.quotes',
     'quote_generator.shared',
+    'quote_generator.zodiac'
 
 
 ]

@@ -1,4 +1,4 @@
-import datetime
+# import datetime
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
@@ -14,6 +14,7 @@ from django.db import models
 # lilac_theme = 'лилаво'
 # sunny_theme = 'слънчево'
 from quote_generator.auth_quotes.models import QuoteUser
+from quote_generator.quotes.models.choices import ZODIAC_CHOICES
 
 THEME_CHOICES = (
     ('', '------'),
@@ -56,6 +57,20 @@ class UserProfile(models.Model):
         null=True,
         default=1,
     )
+    zodiac_sign = models.CharField(
+        max_length=20,
+        choices=ZODIAC_CHOICES,
+        null=True,
+        blank=True,
+    )
+
+    moon_sign = models.CharField(
+        max_length=20,
+        choices=ZODIAC_CHOICES,
+        null=True,
+        blank=True,
+    )
+
     image = models.ImageField(
         upload_to="profiles/",
         blank=True,
